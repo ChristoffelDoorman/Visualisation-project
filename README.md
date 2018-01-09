@@ -3,6 +3,7 @@ Programming project that displays multiple connected datasets with interactive v
 
 ## Data Sources
 * [GDP per adult](http://wid.world/data/)
+* [Happiness](https://ourworldindata.org/happiness-and-life-satisfaction/)
 
 ## Code Sources
 * [Barchart](https://bost.ocks.org/mike/bar/)
