@@ -9,9 +9,10 @@ The data visualtization excists of four views: a woldmap, a happiness vs GDP sca
 * [Happiness](https://ourworldindata.org/happiness-and-life-satisfaction/)
 
 ## Code Sources
-* [Barchart](https://bost.ocks.org/mike/bar/)
+* 
 
 ## Libraries
 * d3.min.js - Copyright (c) 2010-2016, Michael Bostock
 
-Copyright (c) 2018 Christoffel Doorman
+
+*Copyright (c) 2018 Christoffel Doorman*
