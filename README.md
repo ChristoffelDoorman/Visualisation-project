@@ -1,4 +1,4 @@
-# Programmeerproject
+# Programmeerproject - Does Money Buy You Happiness?
 Programming project that displays multiple connected datasets with interactive visualization tools
 
 ## Data Sources
