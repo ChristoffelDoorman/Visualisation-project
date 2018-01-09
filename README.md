@@ -2,7 +2,7 @@
 Programming project that displays multiple connected datasets with interactive visualization tools
 
 ## Data Sources
-* [Barchart](https://bost.ocks.org/mike/bar/)
+* [GDP per adult](http://wid.world/data/)
 
 ## Code Sources
 * [Barchart](https://bost.ocks.org/mike/bar/)
