@@ -4,8 +4,7 @@
 ## Project Proposal
 The data visualtization excists of four views: a woldmap, a happiness vs GDP scatterplot, a GDP vs time linechart and a happiness vs time linechart. The worldmap has a buttontool, which let the user choose to display happiness or GDP values on the map. Furthermore, the user can slide a slider to choose the year, between 2008 and 2016. When hovering over the worldmap with the mouse, the scatterpoint of the country in the scatterplot lights up, and the values are beeing displayed. If the user clicks on a country in the worldmap, the two linecharts change to the selected country.
 
-![GitHub Logo](/doc/project_proposal_sketch.pdf)
-Format: ![Alt Text](url)
+![Project sketch](/doc/project_proposal_sketch.pdf)
 
 ## Data Sources
 * [GDP per adult](http://wid.world/data/)
