@@ -27,8 +27,10 @@ The data will be seperated into three json-files. The first json-file contains t
 ![Project sketch](/doc/project_sketch.png)
 
 ## Visualisations and Interactive Components
+This projects contains three different interactive visualisations: a worldmap, a multiple-line chart with two different y-axi, and two pie charts. The visualisations provide three different interactive components: toggle buttons, a slider and a click-function.
 
 ### Visualisation 1 (Worldmap)
+The worldmap shows the GPD or happiness-grade per country. If you hover over a specific country, the information will be displayed in a pop-up (country, GDP, happiness-grade and possibly population). A toggle button lets the user choose between GPD and happiness: this choise will color the map in GPD- or happiness-rates. When the users clicks on a specific country, the line chart and pie charts change to the selected country.
 
 ### Visualisation 2 (Line charts)
 
@@ -37,4 +39,8 @@ The data will be seperated into three json-files. The first json-file contains t
 ### Interactive component 1 (Toggle buttons (2x))
 
 ### Interactive component 2 (Slider)
+
+### Interactive component 3 (Click)
+
+## D3 Plugins
 
