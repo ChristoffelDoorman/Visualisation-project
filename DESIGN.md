@@ -8,17 +8,17 @@
 ## Data formats
 The data will be seperated into three json-files. The first json-file contains the GDP- and happiness-values of each country, the second json-file is created for the immigration pie chart, and the third json-file will be used for the emigration pie chart.
 
-* The GDP- and happiness-values: 
+* The GDP- and happiness-values:\n
 {"2008": {"AFG": {"country": "afganistan", "gdp": "...", "happiness": "..."}, {"ALG": {"country": "algeria", "gdp": "...", "happiness": "..."}, ...}, "2010": ...}
 
 * Emigration pie chart:
 {"2010": {"AFG": {"origin": "afganistan", "destination1": {"country": "pakistan", "value": "..."}, "destination2": {"country": "india", "value": "..."}, ...}, {"ALG": {"origin": "algeria", "destination1": {"country": "somalia", "value": "..."}, ...},
 
-"2015": {"AFG": ...}}
+  "2015": {"AFG": ...}}
 
 * Immigration pie chart:
 {"2010": {"AFG": {"destination": "afganistan", "origin1": {"country": "pakistan", "value": "..."}, "origin2": {"country": "india", "value": "..."}, ...}, {"ALG": {"destination": "algeria", "origin1": {"country": "somalia", "value": "..."}, ...},
 
-"2015": {"AFG": ...}}
+  "2015": {"AFG": ...}}
 
 
