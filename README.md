@@ -18,4 +18,4 @@ The data visualtization excists of four views: a woldmap, a linechart with a hor
 * d3.min.js - Copyright (c) 2010-2016, Michael Bostock
 
 
-*Copyright (c) 2018 Christoffel Doorman*
+*Copyright (c) 2018, Christoffel Doorman*
