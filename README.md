@@ -8,7 +8,8 @@ The data visualtization excists of four views: a woldmap, a happiness vs GDP sca
 
 ## Data Sources
 * [GDP per adult](http://wid.world/data/)
-* [Happiness](https://ourworldindata.org/happiness-and-life-satisfaction/)
+* [Happiness- and life-satisfaction](https://ourworldindata.org/happiness-and-life-satisfaction/)
+* [International migration stock](http://www.un.org/en/development/desa/population/migration/data/estimates2/estimates17.shtml)
 
 ## Code Sources
 * 
