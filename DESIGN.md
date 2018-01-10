@@ -45,10 +45,10 @@ Both the worldmap as the pie charts use toggle buttons. The worldmap lets the us
 Beside the toggle button, the worldmap contains a slider which lets the user choose the year (2008-2016). In order to implement this interactive component, ...
 
 ## Libraries
-D3 - //cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js
-Datamaps javascript - /datamaps.world.min.js
-Topojson - //cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js
-jQuery - http://code.jquery.com/jquery-latest.min.js
-Bootstrap javascript - //netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
-Bootstrap stylesheet - //netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
+* D3 - //cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js
+* Datamaps javascript - /datamaps.world.min.js
+* Topojson - //cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js
+* jQuery - http://code.jquery.com/jquery-latest.min.js
+* Bootstrap javascript - //netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
+* Bootstrap stylesheet - //netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css
 
