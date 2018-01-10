@@ -22,5 +22,8 @@ The data will be seperated into three json-files. The first json-file contains t
 {"2010": {"AFG": {"destination": "afganistan", "origin1": {"country": "pakistan", "value": "..."}, "origin2": {"country": "india", "value": "..."}, ...}, {"ALG": {"destination": "algeria", "origin1": {"country": "somalia", "value": "..."}, ...},
 
   "2015": {"AFG": ...}}
+  
+## Sketch
+![Project sketch](/doc/project_sketch.png)
 
 
