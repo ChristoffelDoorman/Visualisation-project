@@ -6,15 +6,17 @@
 * [International migration stock - www.un.org](http://www.un.org/en/development/desa/population/migration/data/estimates2/estimates17.shtml): This dataset is a bit complicated. The data is represented in a csv-file, which contains the migration values, along with destinations and origins. The file has the following representation: 2010,origin,destination1,destination2,...,2015,origin,destination1,destination2,... Because the viasualization contains a pie chart of both emigration as immigration, a python script has to read the csv-file in two different ways, as displayed below "Dataformats".
 
 ## Data formats
-The data will be seperated into three json-files. The first json-file contains the GDP- and happiness-values of each country, in the following format:
+The data will be seperated into three json-files. The first json-file contains the GDP- and happiness-values of each country, the second json-file is created for the immigration pie chart, and the third json-file will be used for the emigration pie chart.
+
+* The GDP- and happiness-values: 
 {"2008": {"AFG": {"country": "afganistan", "gdp": "...", "happiness": "..."}, {"ALG": {"country": "algeria", "gdp": "...", "happiness": "..."}, ...}, "2010": ...}
 
-To create the emigration pie chart, a second json-file has to be created in the following form: 
+* Emigration pie chart:
 {"2010": {"AFG": {"origin": "afganistan", "destination1": {"country": "pakistan", "value": "..."}, "destination2": {"country": "india", "value": "..."}, ...}, {"ALG": {"origin": "algeria", "destination1": {"country": "somalia", "value": "..."}, ...},
 
 "2015": {"AFG": ...}}
 
-To create the immigration pie chart, a third json-file has to be created in the following form:
+* Immigration pie chart:
 {"2010": {"AFG": {"destination": "afganistan", "origin1": {"country": "pakistan", "value": "..."}, "origin2": {"country": "india", "value": "..."}, ...}, {"ALG": {"destination": "algeria", "origin1": {"country": "somalia", "value": "..."}, ...},
 
 "2015": {"AFG": ...}}
