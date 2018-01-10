@@ -1,8 +1,7 @@
 # Design
 
 ## Data Sources
-* [GDP per adult](http://wid.world/data/)
-bla bla
+* [GDP per adult](http://wid.world/data/): Deze data bestaat uit 
 * [Happiness- and life-satisfaction](https://ourworldindata.org/happiness-and-life-satisfaction/)
 halloooo
 
