@@ -1,8 +1,8 @@
-# Programmeerproject - Does Money Buy You Happiness?
-"Does money buy you happiness?". A frequently asked question and a lot of dissagreement among people all over the world. This datavisualisation tells you the truth: because data does not lie.
+# Programmeerproject - Chasing the money or happiness?
+People all over the world are migrating from country to country. Some are refugees, fleeing war, poor healthcare or flee because of juristical reasons. Others migrate in order to find more happiness or a higher salary in another country. 
 
 ## Project Proposal
-The data visualtization excists of four views: a woldmap, a happiness vs GDP scatterplot, a GDP vs time linechart and a happiness vs time linechart. The worldmap has a buttontool, which let the user choose to display happiness or GDP values on the map. Furthermore, the user can slide a slider to choose the year, between 2008 and 2016. When hovering over the worldmap with the mouse, the scatterpoint of the country in the scatterplot lights up, and the values are beeing displayed. If the user clicks on a country in the worldmap, the two linecharts change to the selected country.
+The data visualtization excists of four views: a woldmap, a linechart with a horizontal time axis and two y-axi: a GDP and a happiness axis. The worldmap has a buttontool, which let the user choose to display happiness or GDP values on the map. Furthermore, the user can slide a slider to choose the year, between 2008 and 2016. If the user clicks on a country in the worldmap, the linecharts change to the selected country, and two pie charts appear of the year 2015. One pie chart displayes the immigration with countries of origin. The other pie chart displayes the emigration, with countries of destiny.
 
 ![Project sketch](/doc/project_proposal_sketch.pdf)
 
