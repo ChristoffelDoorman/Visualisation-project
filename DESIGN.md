@@ -1,9 +1,6 @@
 # Design
 
 ## Data Sources
-* [GDP per adult](http://wid.world/data/): Deze data bestaat uit 
-* [Happiness- and life-satisfaction](https://ourworldindata.org/happiness-and-life-satisfaction/)
-halloooo
-
-* [International migration stock](http://www.un.org/en/development/desa/population/migration/data/estimates2/estimates17.shtml)
-ja deze ook
+* [GDP per adult](http://wid.world/data/): This data will be retrieved from a csv-file, which is ordered in the following representation: country,2008,2009,... A python script will extract these values and write them into a json file, containing the GDP- and happiness-values.
+* [Happiness- and life-satisfaction](https://ourworldindata.org/happiness-and-life-satisfaction/): This data will be retrieved from a csv-file, which is ordered in the the following representation: country,2008,country,2009,... A python script, different from the script that converts the GDP-values, will extract these values and write them into a json file, containing the GDP- and happiness-values.
+* [International migration stock](http://www.un.org/en/development/desa/population/migration/data/estimates2/estimates17.shtml): This dataset is a bit complicated. The data is represented in a csv-file, which contains the migration values, along with destinations and origins. The file has the following representation: year,origin,destination1,destination2,... Because the viasualization contains a pie chart of both emigration as immigration, a python script has to read the csv-file in two different ways.
