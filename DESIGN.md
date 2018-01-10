@@ -26,4 +26,15 @@ The data will be seperated into three json-files. The first json-file contains t
 ## Sketch
 ![Project sketch](/doc/project_sketch.png)
 
+## Visualisations and Interactive Components
+
+### Visualisation 1 (Worldmap)
+
+### Visualisation 2 (Line charts)
+
+### Visualisation 3 (Pie charts)
+
+### Interactive component 1 (Toggle buttons (2x))
+
+### Interactive component 2 (Slider)
 
