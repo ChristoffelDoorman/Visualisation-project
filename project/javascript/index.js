@@ -17,6 +17,10 @@ var margin = {top: 50, right: 30, bottom: 30, left: 40},
 
 window.onload = function(){
 
-  drawWorldmap();
+    drawWorldmap();
+
+    drawLinechart();
+
+    drawImmigrationPiechart();
 
 }
