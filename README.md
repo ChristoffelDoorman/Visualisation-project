@@ -14,7 +14,7 @@ The data visualtization excists of four views: a woldmap, a linechart with a hor
 * [International migration stock](http://www.un.org/en/development/desa/population/migration/data/estimates2/estimates17.shtml)
 
 ## Code Sources
-* Country codes: Robin Kuiper (27-03-2014)
+* [Country codes](https://data.mprog.nl/course/30%20Homework/140%20D3%20Map/countries.js) - Author: Robin Kuiper (2014)
 
 ## Libraries
 * d3.min.js - Copyright (c) 2010-2016, Michael Bostock
