@@ -1,3 +1,4 @@
 # Exclude the following files for committing
+.pyc
 .command
 .DS_Store
