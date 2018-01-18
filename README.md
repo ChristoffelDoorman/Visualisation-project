@@ -15,6 +15,7 @@ The data visualtization excists of four views: a woldmap, a linechart with a hor
 
 ## Code Sources
 * [Country codes](https://data.mprog.nl/course/30%20Homework/140%20D3%20Map/countries.js) - Author: Robin Kuiper (2014)
+* [Worldmap](http://bl.ocks.org/tomschulze/961d57bd1bbd2a9ef993f2e8645cb8d2)
 
 ## Libraries
 * d3.min.js - Copyright (c) 2010-2016, Michael Bostock
