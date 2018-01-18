@@ -1,6 +1,6 @@
 
 
-function drawImmigrationPiechart(){
+function drawImmigrationPiechart(dataa){
 
     // create svg
     var immigrationChart = d3.select('#container3').append('svg')
@@ -30,7 +30,7 @@ function drawImmigrationPiechart(){
         .outerRadius(radius - 40)
         .innerRadius(radius - 40);
 
-    d3.csv("data.csv", function(d) {
+    d3.csv(dataa, function(d) {
       d.population = +d.population;
       return d;
     }, function(error, data) {
