@@ -33,3 +33,18 @@ I realized that another json-structure would be more useful for my gdp- and happ
 ### Tue January 16
 
 Resolved issue with country-names and codes by using country_code script of Robin Kuiper. Resolved issue to read out migration csv row by row while saving needed column-values. Migration data almost ready: have to do some sample checking to check correctness and have to convert country-names to codes with the country-code script.
+
+
+### Wed January 17
+
+Checked and finished migration data. Implemented worldmap.js and encountered some issues with the d3.json. Thought that the file had to be loaded from the directory of the index.js file, but had to call it from the location of the server.command file. Had some issues with the colloring of the map, but resolved it.
+
+
+### Thu Januari 18
+
+Started with the implementation of linechart.js and piechart.js. Had to adjust the dataset a bit. Implemented the slider but encountered the following issue: instead of a slider, the visualisation shows a textbox. 2008[textbox]2016 instead of 2008|------|--|2009. Resolved if "type" in the input element is set to "range" instead of "text"
+
+
+### Fri Januari 19
+
+Just before presentation, the visualisation of the piechart and linechart disappeared for unknown reasons.
