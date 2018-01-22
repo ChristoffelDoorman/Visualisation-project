@@ -1,68 +1,80 @@
+/*
+index.js
 
+Programmeerproject
+Minor Programmeren (UvA)
+Author: Christoffel Doorman
+Student number: 10580557
 
-function drawImmigrationPiechart(dataa){
+This file contains two functions: a function that builds and updates the
+worldmap, and a function that builds the legend.
+*/
 
-    // create svg
-    var immigrationChart = d3.select('#container3').append('svg')
-        .attr('class', 'piechart rem')
-            .attr('width', '100%')
+// var width = 960;
+// var height = 400;
+var radius = 200;
+
+/*
+This function draws the scatterplot.
+data: the data displayed in the barchart
+year: the selected year
+category: Obesity, Overweight or BMI
+variable: GDP or Happiness
+*/
+function drawPiechart(data, year, country, migrationType){
+
+    // prepare data
+    var data = data[year][country][migrationType]
+    data.forEach(function(d) {
+        d.value = +d.value;
+    })
+
+    console.log(data)
+
+    // append svg
+    if (migrationType == 'immigration') {
+        var piechart = d3.select('#container3').append('svg')
+            .attr('class', 'piechart rem')
             .attr('height', 400)
+            .attr('width', 800)
             .append('g')
-            .attr('transform', 'translate(' + 2 * margin.left + ',' + margin.top + ')');
+            .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
+    }
 
-    var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
-    radius = Math.min(width, height) / 2,
-    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    if (migrationType == 'emigration') {
+        var piechart = d3.select('#container4').append('svg')
+            .attr('class', 'piechart rem')
+            .attr('height', 400)
+            .attr('width', 800)
+            .append('g')
+            .attr('transform', 'translate(' + width + ',' + height / 2 + ')')
+    }
 
-    var color = d3.scale.ordinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+    var arc = d3.svg.arc()
+			.outerRadius(radius)
+			.innerRadius(30);
 
     var pie = d3.layout.pie()
-        .sort(null)
-        .value(function(d) { return d.population; });
+			.sort(null)
+			.value(function(d){ return d.value; });
 
-    var path = d3.svg.arc()
-        .outerRadius(radius - 10)
-        .innerRadius(0);
+    var g = piechart.selectAll(".fan")
+			.data(pie(data))
+			.enter()
+			.append("g")
+			.attr("class", "fan")
 
-    var label = d3.svg.arc()
-        .outerRadius(radius - 40)
-        .innerRadius(radius - 40);
+    var color = d3.scale.ordinal()
+                .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-    d3.csv(dataa, function(d) {
-      d.population = +d.population;
-      return d;
-    }, function(error, data) {
+    console.log(color(5))
 
-      var arc = g.selectAll(".arc")
-        .data(pie(data))
-        .enter().append("g")
-          .attr("class", "arc");
+    g.append("path")
+    	.attr("d", arc)
+    	.attr("fill", function(d){ return color(d.data.country); })
 
-      arc.append("path")
-          .attr("d", path)
-          .attr("fill", function(d) { return color(d.data.age); });
-
-      arc.append("text")
-          .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
-          .attr("dy", "0.35em")
-          .text(function(d) { return d.data.age; });
-    });
-
-
-
-}
-
-
-function drawEmigrationPiechart(){
-
-    // create svg
-    var chart = d3.select('#container4').append('svg')
-        .attr('class', 'piechart rem')
-            .attr('width', '100%')
-            .attr('height', 400)
-            .append('g')
-            .attr('transform', 'translate(' + 2 * margin.left + ',' + margin.top + ')');
-
+    g.append("text")
+        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+        .style("text-anchor", "middle")
+        .text(function(d) { return d.data.country; });
 }

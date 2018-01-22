@@ -34,7 +34,8 @@ window.onload = function(){
 
 
         drawWorldmap(mapData, defaultYear, defaultCategory);
-
+        drawPiechart(migrationData, '2010', 'DZA', 'emigration')
+        drawPiechart(migrationData, '2010', 'DZA', 'immigration')
 
         // With JQuery
         $('#slider').slider()
@@ -50,14 +51,10 @@ window.onload = function(){
                 // redraw all the visualizations
                 drawWorldmap(data, currYear, currCategory, currVariable);
 
-
-
             })
 
 
-        // drawLinechart();
 
-        // drawImmigrationPiechart('data.csv');
 
     };
 }

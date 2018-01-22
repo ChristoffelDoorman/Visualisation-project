@@ -14,13 +14,10 @@ function drawWorldmap(data, year, category){
 
     // select chosen year and category
     data = data[year][category];
-    console.log(data)
 
     var dataset = {};
 
-
     var knownValues = Object.keys(data).map(function (key) { return data[key]; });
-    console.log(knownValues)
 
     // delete unknown values from array
     for (i = 0; i < knownValues.length; i++) {
@@ -49,7 +46,6 @@ function drawWorldmap(data, year, category){
 
     });
 
-    console.log(dataset)
 
     var map = new Datamap({
         element: document.getElementById('container1'),

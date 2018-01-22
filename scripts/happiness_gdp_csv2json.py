@@ -24,7 +24,6 @@ with open('../data/happiness.csv', 'rb') as infile:
             if country[1] not in data[year]["happiness"]:
                 data[year]["happiness"][country[1]] = "unknown"
 
-
     infile.close()
 
 
@@ -43,39 +42,20 @@ with open('../data/gdp.csv', 'rb') as infile:
             if row[0] == country[2]:
                 row[0] = country[1]
 
-
+        # Add known data to dictionary
         for i in range(1,10):
             if len(row[0]) == 3:
                 data[headers[i]]["gdp"][row[0]] = row[i]
 
-
     # Append countries with unknown data
     for country in country_codes:
-
         for year in years:
-
             if country[1] not in data[year]["gdp"]:
                 data[year]["gdp"][country[1]] = "unknown"
 
     infile.close()
 
-
+# Store in outfile and close outfile
 outfile = open('../project/mapData.json', 'w')
-
 json.dump(data, outfile, ensure_ascii=False, indent=4)
 outfile.close()
-
-
-
-
-
-
-
-
-
-
-# with open('../data/happiness.csv', 'rb') as happiness_file, open('../data/gdp.csv', 'rb') as gdp_file
-#     open('happiness_gdp.json', 'w') as json_file:
-#     happiness_reader = csv.reader(happiness_file, delimiter=';', quotechar='"')
-#     gdp_reader = csv.reader(gdp_file, delimiter=';', quotechar='"')
-#     headers = reader.next()
