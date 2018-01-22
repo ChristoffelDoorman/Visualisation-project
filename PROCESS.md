@@ -47,4 +47,9 @@ Started with the implementation of linechart.js and piechart.js. Had to adjust t
 
 ### Fri Januari 19
 
-Just before presentation, the visualisation of the piechart and linechart disappeared for unknown reasons.
+Just before presentation, the visualisation of the piechart and linechart disappeared for unknown reasons. Restored later that day.
+
+
+### Mon Januari 22
+
+Implemented the piechart function. Encountered issues with the structure of the data. Had to store the values in a list: {year; {country: {migration: [{country, value}]}}} instead of {year; {country: {migraion: {country: value}}}}. Another problem that took a lot of time to discover was the data was not correctly formatted (1,000 instead of 1.000). Furthermore, in order to get only the big data in the pie chart, and store the smaller numbers in 'Others", I had to restructure the json file a lot. Managed to create a dictionary in the json with all other countries.
