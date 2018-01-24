@@ -15,11 +15,11 @@ worldmap, and a function that builds the legend.
 var radius = 200;
 
 /*
-This function draws the scatterplot.
-data: the data displayed in the barchart
-year: the selected year
-category: Obesity, Overweight or BMI
-variable: GDP or Happiness
+This function draws a piechart.
+data: the data from migrationData.json
+year: the selected year (2010 or 2015)
+country: the selected country in the worldmap
+migrationType: emigration or immigration
 */
 function drawPiechart(data, year, country, migrationType){
 
@@ -28,8 +28,6 @@ function drawPiechart(data, year, country, migrationType){
     data.forEach(function(d) {
         d.value = +d.value;
     })
-
-    console.log(data)
 
     // append svg
     if (migrationType == 'immigration') {
@@ -66,8 +64,6 @@ function drawPiechart(data, year, country, migrationType){
 
     var color = d3.scale.ordinal()
                 .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
-    console.log(color(5))
 
     g.append("path")
     	.attr("d", arc)

@@ -27,12 +27,12 @@ def read_row(year, data, total_emigrations):
         # Add existing data to dictionary
         if country_code in data[year]:
 
-            for i in range(6, 237):
+            for i in range(6, 238):
                 total_emigration = total_emigrations.get(headers[i], "none")
                 if row[i] != "..":
 
                     # Append immigration data if value is more than 10 percent of total
-                    if int(row[i]) > (0.0005 * int(row[3])):
+                    if int(row[i]) > (0.01 * int(row[3])):
                         data[year][country_code]["immigration"].append({"country": headers[i], "value": row[i]})
 
                     else:
@@ -40,7 +40,7 @@ def read_row(year, data, total_emigrations):
                         immigration_others.append({"country": headers[i], "value": row[i]})
 
                     # Append emigration data if value is more than 10 percent of total
-                    if int(row[i]) > (0.0005 * int(total_emigration)):
+                    if int(row[i]) > (0.01 * int(total_emigration)):
                         data[year][headers[i]]["emigration"].append({"country": country_code, "value": row[i]})
 
                     else:

@@ -34,11 +34,10 @@ This file
     <!-- Javascript files project -->
     <!-- <script type="text/javascript" src="project/javascript/helper.js"></script> -->
     <script type="text/javascript" src="project/javascript/helpers.js"></script>
-    <script type="text/javascript" src="project/javascript/worldmap.js"></script>
-    <script type="text/javascript" src="project/javascript/linechart.js"></script>
     <script type="text/javascript" src="project/javascript/piecharts.js"></script>
+    <script type="text/javascript" src="project/javascript/linechart.js"></script>
+    <script type="text/javascript" src="project/javascript/worldmap.js"></script>
     <script type="text/javascript" src="project/javascript/index.js"></script>
-
 
   </head>
 
@@ -50,27 +49,28 @@ This file
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+
                 <div class="btn-group">
-                    <button type="button" value="0" class="btn btn-default map" id='map0'>GDP</button>
-                    <button type="button" value="1" class="btn btn-default map start" id='map1'>Happiness</button>
+                    <button type="button" value="0" class="btn btn-default map start" id='map0'>GDP</button>
+                    <button type="button" value="1" class="btn btn-default map" id='map1'>Happiness</button>
                 </div>
+
+                <div id="container1"></div>
+
             </div>
-
-            <div id="container1"></div>
-
         </div>
 
 
         <div class="row">
-            <div class='well' dir ="rtl">
+            <div class='well'>
                 <span>2016</span>
-                    <input id="slider" type="range" data-slider-min="2008" data-slider-max="2016" data-slider-step="1" data-slider-value="2014"/>
+                    <input id="slider" type="range" data-slider-min="2008" data-slider-max="2016" data-slider-step="1" data-slider-value="2014" data-slider-tooltip="show"/>
                 <span>2008</span>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div id="container2"></div>
             </div>
 

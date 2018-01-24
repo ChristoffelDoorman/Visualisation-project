@@ -1,8 +1,18 @@
-/*WORLDMAP*/
-
+/* WORLDMAP */
 #container1 {
 	height: 500px;
 	position: relative;
 	width: 100%;
 	/*z-index: -1;*/
+}
+
+/* LINECHART */
+
+/* PIECHARTS */
+#container3 {
+	width: 100%;
+}
+
+#container4 {
+	width:100%;
 }

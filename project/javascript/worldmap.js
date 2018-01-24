@@ -10,10 +10,10 @@ This file contains two functions: a function that builds and updates the
 worldmap, and a function that builds the legend.
 */
 
-function drawWorldmap(data, year, category){
+function drawWorldmap(mapData, migrationData, year, category){
 
     // select chosen year and category
-    data = data[year][category];
+    var data = mapData[year][category];
 
     var dataset = {};
 
@@ -38,7 +38,7 @@ function drawWorldmap(data, year, category){
 
 
     // fill dataset in appropriate format
-    Object.keys(data).forEach(function(item){ //
+    Object.keys(data).forEach(function(item) {
 
         var value = data[item]
 
@@ -65,11 +65,22 @@ function drawWorldmap(data, year, category){
         },
 
 
-            done: function(datamap, geography) {
-                datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-                    alert(geography.properties.name);
+        done: function(geography) {
+            d3.selectAll('.datamaps-subunit')
+                .on('click', function(geography) {
+
+                    d3.selectAll('.piechart').remove();
+                    d3.select('.linechart').remove();
+
+                    currCountry = geography.id;
+
+                    // drawLinechart(mapData, currCountry);
+                    drawLinechart(mapData, currCountry)
+                    drawPiechart(migrationData, '2010', currCountry, 'emigration');
+                    drawPiechart(migrationData, '2010', currCountry, 'immigration');
+
                 });
-            },
+        },
 
         // displayed data on map
         data: dataset
