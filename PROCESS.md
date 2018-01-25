@@ -53,3 +53,13 @@ Just before presentation, the visualisation of the piechart and linechart disapp
 ### Mon Januari 22
 
 Implemented the piechart function. Encountered issues with the structure of the data. Had to store the values in a list: {year; {country: {migration: [{country, value}]}}} instead of {year; {country: {migraion: {country: value}}}}. Another problem that took a lot of time to discover was the data was not correctly formatted (1,000 instead of 1.000). Furthermore, in order to get only the big data in the pie chart, and store the smaller numbers in 'Others", I had to restructure the json file a lot. Managed to create a dictionary in the json with all other countries.
+
+
+### Tue Januari 23
+
+Changed the migration.json file a bit. Instead of the dictionary with {"country": "Others", "value": "number"}, I appended all countries into the dictionary: {"country": "Others", "value": "number", "info": [{"country": "FRA", "value": "number"}, {...}, ...]}. Worked further on the implementation of the linechart function with to y-axis.
+
+
+### Wed Januari 24
+
+Today I made all visualizations interactive. Solved the problem where the piecharts dissapeared when the category of the worldmap was changed. The problem was that I had to redraw the piechart, because they were linked to the worldmap. All visualisations are linked and work. That means I have to start working on the design and things like tooltips, layout, etc.
