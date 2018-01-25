@@ -6,6 +6,18 @@
 	/*z-index: -1;*/
 }
 
+/* SLIDER */
+.slidecontainer {
+    width: 30%;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+#slider.well {
+	width: 40%;
+}
 /* LINECHART */
 
 /* PIECHARTS */

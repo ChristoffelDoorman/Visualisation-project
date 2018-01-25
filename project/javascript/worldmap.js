@@ -12,8 +12,11 @@ worldmap, and a function that builds the legend.
 
 function drawWorldmap(mapData, migrationData, year, category){
 
+    var parseMoney = function(d) { return d3.format(",")(d) + ' Intl$'; }
+
     // select chosen year and category
     var data = mapData[year][category];
+    console.log(data);
 
     var dataset = {};
 
@@ -42,7 +45,7 @@ function drawWorldmap(mapData, migrationData, year, category){
 
         var value = data[item]
 
-        dataset[item] = {gdp: value, fillColor: paletteScale(value)};
+        dataset[item] = {category: value, fillColor: paletteScale(value)};
 
     });
 
@@ -79,7 +82,27 @@ function drawWorldmap(mapData, migrationData, year, category){
                     drawPiechart(migrationData, '2010', currCountry, 'emigration');
                     drawPiechart(migrationData, '2010', currCountry, 'immigration');
 
-                });
+                })
+        },
+
+        geographyConfig: {
+            hideAntarctica: true,
+            borderWidth: 1,
+            borderOpacity: 1,
+            borderColor: '#FDFDFD',
+            popupTemplate: function(geography, data) {
+                if (category == 'gdp') {
+                    return '<div class="hoverinfo"><strong>' + geography.properties.name + ': ' + parseMoney(data['category']) + '</strong></div>';
+                }
+                if (category == 'happiness') {
+                    return '<div class="hoverinfo"><strong>' + geography.properties.name + ': ' + parseFloat(data['category']).toFixed(1) + '</strong></div>';
+                }
+            },
+            highlightFillColor: '#FC8D59',
+            highlightBorderColor: 'rgba(250, 15, 160, 0.2)',
+            highlightBorderWidth: 2,
+            highlightBorderOpacity: 1
+
         },
 
         // displayed data on map

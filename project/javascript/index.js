@@ -63,6 +63,19 @@ window.onload = function(){
         //
         //     })
 
+        var slider = document.getElementById("slider-years");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+
+            d3.select('.datamap').remove();
+
+            var indexYear = slider.value
+
+            drawWorldmap(mapData, migrationData, indexYear, currCategory);
+        }
 
         // redraw map after chosen category
         d3.selectAll('.btn.btn-default.map')
