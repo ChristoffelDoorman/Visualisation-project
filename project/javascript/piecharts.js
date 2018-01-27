@@ -34,18 +34,18 @@ function drawPiechart(data, year, country, migrationType){
         var piechart = d3.select('#container3').append('svg')
             .attr('class', 'piechart rem')
             .attr('height', 400)
-            .attr('width', 800)
+            .attr('width', 400)
             .append('g')
-            .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
+            .attr('transform', 'translate(' + 200 + ',' + 200 + ')')
     }
 
     if (migrationType == 'emigration') {
         var piechart = d3.select('#container4').append('svg')
             .attr('class', 'piechart rem')
             .attr('height', 400)
-            .attr('width', 800)
+            .attr('width', 400)
             .append('g')
-            .attr('transform', 'translate(' + width + ',' + height / 2 + ')')
+            .attr('transform', 'translate(' + 200  + ',' + 200 + ')')
     }
 
     var arc = d3.svg.arc()

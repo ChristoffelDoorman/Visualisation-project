@@ -10,13 +10,13 @@ This file contains two functions: a function that builds and updates the
 worldmap, and a function that builds the legend.
 */
 
+
 function drawWorldmap(mapData, migrationData, year, category){
 
     var parseMoney = function(d) { return d3.format(",")(d) + ' Intl$'; }
 
     // select chosen year and category
     var data = mapData[year][category];
-    console.log(data);
 
     var dataset = {};
 
@@ -33,11 +33,15 @@ function drawWorldmap(mapData, migrationData, year, category){
     var minValue = Math.min.apply(null, knownValues);
     var maxValue = Math.max.apply(null, knownValues);
 
+    var stepsize = (maxValue - minValue) / 5;
+
     // create color palette function
     // color can be whatever you wish
     var paletteScale = d3.scale.linear()
             .domain([minValue, maxValue])
-            .range(["#EFEFFF", "#02386F"]); // blue color
+            .range(["#011f4b", "#b3cde0"]);
+            // .range('#d3d3d3', '#bdbdbd', '#a8a8a8', '#939393', '#7e7e7e');
+
 
 
     // fill dataset in appropriate format
@@ -59,12 +63,7 @@ function drawWorldmap(mapData, migrationData, year, category){
         },
 
         fills: {
-            A:     '#deebf7',
-            B:     '#9ecae1',
-            C:     '#4292c6',
-            D:     '#2171b5',
-            E:     '#08519c',
-            defaultFill: '#bdbdbd'
+            defaultFill: '#D3D3D3'
         },
 
 
@@ -110,3 +109,40 @@ function drawWorldmap(mapData, migrationData, year, category){
 
     });
 };
+
+
+function drawLegend(category) {
+    /*
+    This function creates the legend for the worldmap.
+    category: Obesity, Overweight or BMI
+    */
+
+    // BMI
+    if (category == 'gdp') {
+        map.legend({
+            legendTitle: 'GDP per capita',
+            defaultFillName: 'unknown',
+            labels: {
+                A: '< 22.5',
+                B: '22.5 - 25',
+                C: '25 - 27.5',
+                D: '27.5 - 30',
+                E: '> 30'
+            }
+        });
+    }
+    // Overweight or Obesity
+    else {
+        map.legend({
+            legendTitle: 'Percentage of ' + category + ', ages 18+, in the World',
+            defaultFillName: 'No Data',
+            labels: {
+                A: '< 20',
+                B: '20 - 40',
+                C: '40 - 60',
+                D: '60 - 80',
+                E: '80 - 100'
+            }
+        });
+    }
+}

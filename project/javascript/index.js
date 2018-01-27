@@ -11,7 +11,7 @@ This file
 
 var currYear = '2014';
 var currCategory = 'gdp';
-var currCountry = 'AFG';
+var currCountry = 'NLD';
 
 // global datasets
 var mapData;
@@ -23,7 +23,7 @@ var categories = ['gdp', 'happiness']
 var prevValue;
 
 // set margin, width and height
-var margin = {top: 50, right: 30, bottom: 30, left: 40},
+var margin = {top: 50, right: 30, bottom: 30, left: 50},
     width = 560 - margin.right - margin.left,
     height = 400 - margin.top - margin.bottom;
 
@@ -65,7 +65,7 @@ window.onload = function(){
 
         var slider = document.getElementById("slider-years");
         var output = document.getElementById("demo");
-        output.innerHTML = slider.value; // Display the default slider value
+        // output.innerHTML = slider.value; // Display the default slider value
 
         // Update the current slider value (each time you drag the slider handle)
         slider.oninput = function() {

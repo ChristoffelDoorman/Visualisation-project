@@ -1,15 +1,51 @@
+
+
+/*HEADER*/
+.jumbotron {
+  	margin-bottom: 0;
+  	margin: 0 auto;
+  	max-height: 150px;
+  	width: 100%;
+}
+
+.jumbotron h1 {
+	font-size: 30px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.jumbotron p {
+	font-size: 15px;
+}
+
 /* WORLDMAP */
 #container1 {
-	height: 500px;
+	height: 400px;
 	position: relative;
 	width: 100%;
 	/*z-index: -1;*/
 }
 
+
+
 /* SLIDER */
-.slidecontainer {
-    width: 30%;
+#slider-well {
+	width: 50%;
+	margin: auto;
+	position: absolute;
+	left: 200px;
+	bottom: 30px;
 }
+
+.slidecontainer {
+    width: 100%;
+}
+
+#slider-years {
+	width: 100%;
+}
+
+
 
 .slider:hover {
     opacity: 1;
@@ -18,7 +54,49 @@
 #slider.well {
 	width: 40%;
 }
+
 /* LINECHART */
+#container2 {
+	width: 100%;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.gdp {
+	stroke: steelblue;
+	stroke-width: 2px;
+}
+
+.happiness {
+  	stroke: #FF0000;
+	stroke-width: 2px;
+}
+
+.line {
+	fill: none;
+}
+
+.gap-line {
+	stroke-dasharray: 4,4;
+}
+
+.dot {
+	fill: white;
+}
+
+/* #gdpline {
+	fill: none;
+  	stroke: #000;
+	stroke-width: 2px;
+} */
+
+
 
 /* PIECHARTS */
 #container3 {

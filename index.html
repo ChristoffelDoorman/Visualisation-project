@@ -12,79 +12,87 @@ This file
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- CSS files -->
-    <link rel="stylesheet" href="project/css/jquery-ui.min.css"/>
-    <link rel="stylesheet" href="project/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="project/css/bootstrap-slider.css"/>
-    <link rel="stylesheet" href="project/css/index.css"/>
-    <!-- D3 -->
-    <script type="text/javascript" src="project/javascript/libraries/d3.min.js"></script>
-    <!-- D3 queue -->
-    <script src="https://d3js.org/d3-queue.v3.min.js"></script>
-    <!-- Topojason javascript -->
-    <script type="text/javascript" src="project/javascript/libraries/topojson.min.js"></script>
-    <!-- Datamaps javascript -->
-    <script type="text/javascript" src="project/javascript/libraries/datamaps.world.min.js"></script>
-    <!-- jQuery -->
-    <script type="text/javascript" src="project/javascript/libraries/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="project/javascript/libraries/jquery-ui.min.js"></script>
-    <!-- Bootstrap javascript -->
-    <script type="text/javascript" src="project/javascript/libraries/bootstrap.min.js"></script>
-    <!-- Javascript files project -->
-    <!-- <script type="text/javascript" src="project/javascript/helper.js"></script> -->
-    <script type="text/javascript" src="project/javascript/helpers.js"></script>
-    <script type="text/javascript" src="project/javascript/piecharts.js"></script>
-    <script type="text/javascript" src="project/javascript/linechart.js"></script>
-    <script type="text/javascript" src="project/javascript/worldmap.js"></script>
-    <script type="text/javascript" src="project/javascript/index.js"></script>
+    <head>
+        <!-- CSS files -->
+        <link rel="stylesheet" href="project/css/jquery-ui.min.css"/>
+        <link rel="stylesheet" href="project/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="project/css/bootstrap-slider.css"/>
+        <link rel="stylesheet" href="project/css/index.css"/>
+        <!-- D3 -->
+        <script type="text/javascript" src="project/javascript/libraries/d3.min.js"></script>
+        <!-- D3 queue -->
+        <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+        <!-- Topojason javascript -->
+        <script type="text/javascript" src="project/javascript/libraries/topojson.min.js"></script>
+        <!-- Datamaps javascript -->
+        <script type="text/javascript" src="project/javascript/libraries/datamaps.world.min.js"></script>
+        <!-- jQuery -->
+        <script type="text/javascript" src="project/javascript/libraries/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="project/javascript/libraries/jquery-ui.min.js"></script>
+        <!-- Bootstrap javascript -->
+        <script type="text/javascript" src="project/javascript/libraries/bootstrap.min.js"></script>
+        <!-- Javascript files project -->
+        <!-- <script type="text/javascript" src="project/javascript/helper.js"></script> -->
+        <script type="text/javascript" src="project/javascript/helpers.js"></script>
+        <script type="text/javascript" src="project/javascript/piecharts.js"></script>
+        <script type="text/javascript" src="project/javascript/linechart.js"></script>
+        <script type="text/javascript" src="project/javascript/worldmap.js"></script>
+        <script type="text/javascript" src="project/javascript/index.js"></script>
 
-  </head>
+    </head>
 
-  <body>
-    <!-- headers -->
+    <body>
 
-    <h1>Hoi</h1>
-
-    <div class="container">
+        <!-- Headers -->
         <div class="row">
-            <div class="col-md-8">
-
-                <div class="btn-group">
-                    <button type="button" value="0" class="btn btn-default map start" id='map0'>GDP</button>
-                    <button type="button" value="1" class="btn btn-default map" id='map1'>Happiness</button>
-                </div>
-
-                <div id="container1"></div>
-
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class='well well-sm' id='slider-well'>
-                <div class="slidecontainer">
-                    <input type="range" min="2008" max="2016" value="2012" class="slider" id="slider-years">
-                    <p>Value: <span id="demo"></span></p>
+            <div class="jumbotron">
+                <div class="container text-center">
+                    <h1>Do we follow the money or happiness?</h1>
+                    <p>adsf</p>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div id="container2"></div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+
+                    <div class="btn-group">
+                        <button type="button" value="0" class="btn btn-default map start" id='map0'>GDP</button>
+                        <button type="button" value="1" class="btn btn-default map" id='map1'>Happiness</button>
+                    </div>
+
+                    <div id="container1">
+
+                        <div class='well well-sm' id='slider-well'>
+                            <div class="slidecontainer">
+                                <input type="range" min="2008" max="2016" value="2012" class="slider" id="slider-years">
+                                <!-- <p>Value: <span id="demo"></span></p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div id="container3"></div>
+                </div>
+
             </div>
 
-            <div class="col-md-3">
-                <div id="container3"></div>
+
+            <div class="row">
+                <div class="col-md-9">
+                    <div id="container2"></div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div id="container4"></div>
+                </div>
             </div>
 
-            <div class="col-md-3">
-                <div id="container4"></div>
-            </div>
         </div>
 
-    </div>
-
-  </body>
+    </body>
 </html>
