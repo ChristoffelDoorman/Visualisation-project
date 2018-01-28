@@ -63,3 +63,13 @@ Changed the migration.json file a bit. Instead of the dictionary with {"country"
 ### Wed Januari 24
 
 Today I made all visualizations interactive. Solved the problem where the piecharts dissapeared when the category of the worldmap was changed. The problem was that I had to redraw the piechart, because they were linked to the worldmap. All visualisations are linked and work. That means I have to start working on the design and things like tooltips, layout, etc.
+
+
+### Thu Januari 25
+
+Today I was feeling sick and could not do so much.
+
+
+### Fri Januari 26
+
+The same as yesterday.
