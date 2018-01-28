@@ -31,8 +31,8 @@ var margin = {top: 50, right: 30, bottom: 30, left: 50},
 window.onload = function(){
 
     d3.queue()
-        .defer(d3.json, 'project/mapData.json')
-        .defer(d3.json, 'project/migrationData.json')
+        .defer(d3.json, '../data/mapData.json')
+        .defer(d3.json, '../data/migrationData.json')
         .await(ready);
 
     function ready(error, mapData, migrationData) {

@@ -62,7 +62,7 @@ def insert_emigration(year):
         data[year][headers[i]]["emigration"].append({"country": "Others", "value": value, "info": info})
 
 
-with open("../data/migration_cleandata.csv") as infile:
+with open("../raw_data/migration_cleandata.csv") as infile:
     reader = csv.reader(infile, delimiter=';', quotechar='"')
     headers = reader.next()
     headernames = list(headers)
@@ -105,6 +105,6 @@ with open("../data/migration_cleandata.csv") as infile:
 
 
 # Store in outfile and close outfile
-outfile = open('../project/migrationData.json', 'w')
+outfile = open('../project/data/migrationData.json', 'w')
 json.dump(data, outfile, ensure_ascii=False, indent=4)
 outfile.close()

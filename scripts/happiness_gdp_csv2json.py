@@ -5,7 +5,7 @@ data = {}
 years = []
 
 # Add happiness rates to json
-with open('../data/happiness.csv', 'rb') as infile:
+with open('../raw_data/happiness.csv', 'rb') as infile:
     reader = csv.reader(infile, delimiter=';', quotechar='"')
     headers = reader.next()
 
@@ -28,7 +28,7 @@ with open('../data/happiness.csv', 'rb') as infile:
 
 
 # Add gdp values to json
-with open('../data/gdp.csv', 'rb') as infile:
+with open('../raw_data/gdp.csv', 'rb') as infile:
     reader = csv.reader(infile, delimiter=';', quotechar='"')
     headers = reader.next()
 
@@ -56,6 +56,6 @@ with open('../data/gdp.csv', 'rb') as infile:
     infile.close()
 
 # Store in outfile and close outfile
-outfile = open('../project/mapData.json', 'w')
+outfile = open('../project/data/mapData.json', 'w')
 json.dump(data, outfile, ensure_ascii=False, indent=4)
 outfile.close()
