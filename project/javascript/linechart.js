@@ -32,8 +32,8 @@ function drawLinechart(data, country) {
     }
 
     var x = d3.time.scale().range([0, width]);
-    var y0 = d3.scale.linear().range([height, 0]);
-    var y1 = d3.scale.linear().range([height, 0]);
+    var y0 = d3.scale.linear().range([200, 0]);
+    var y1 = d3.scale.linear().range([200, 0]);
 
     var xAxis = d3.svg.axis().scale(x)
         .orient("bottom").ticks(9)
@@ -59,8 +59,8 @@ function drawLinechart(data, country) {
     var linechart = d3.select('#container2')
         .append('svg')
             .attr('class', 'linechart rem')
-            .attr('width', 600)
-            .attr('height', 400)
+            .attr('width', width)
+            .attr('height', 300)
         .append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
@@ -85,13 +85,13 @@ function drawLinechart(data, country) {
         .attr('class', 'gdp')
         .append("path")
         .attr("class", "line")
-        .attr("d", gdpLine(dataset))
+        .attr("d", gdpLine(dataset));
 
     linechart.append('g')
         .attr('class', 'happiness')
         .append("path")
         .attr("class", "line")
-        .attr("d", happinessLine(dataset))
+        .attr("d", happinessLine(dataset));
 
 
 

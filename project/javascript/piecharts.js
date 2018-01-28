@@ -29,8 +29,18 @@ function drawPiechart(data, year, country, migrationType){
         d.value = +d.value;
     })
 
+    // calculate total immigrants or emigrants
+    var totalMigration = 0;
+
+    for (var i = 0; i < data.length; i++) {
+        totalMigration += data[i]['value'];
+    }
+
     // append svg
     if (migrationType == 'immigration') {
+
+        addTooltip('#container3', 'pie');
+
         var piechart = d3.select('#container3').append('svg')
             .attr('class', 'piechart rem')
             .attr('height', 400)
@@ -40,6 +50,9 @@ function drawPiechart(data, year, country, migrationType){
     }
 
     if (migrationType == 'emigration') {
+
+        addTooltip('#container4', 'piechart');
+
         var piechart = d3.select('#container4').append('svg')
             .attr('class', 'piechart rem')
             .attr('height', 400)
@@ -48,19 +61,57 @@ function drawPiechart(data, year, country, migrationType){
             .attr('transform', 'translate(' + 200  + ',' + 200 + ')')
     }
 
+    // display total emigration or emigration inside piechart
+    piechart.append('text')
+        .attr("text-anchor", "middle")
+        .text("Total: " + totalMigration);
+
     var arc = d3.svg.arc()
 			.outerRadius(radius)
-			.innerRadius(30);
+			.innerRadius(80);
 
     var pie = d3.layout.pie()
 			.sort(null)
 			.value(function(d){ return d.value; });
+
+    // piechart.append('g')
+    //         .attr('class', 'slices')
+    //
+    // var key = function(d){ return d.data.label; };
+    //
+    // var slice = svg.select(".slices").selectAll("path.slice")
+	// 	.data(pie(data), key);
 
     var g = piechart.selectAll(".fan")
 			.data(pie(data))
 			.enter()
 			.append("g")
 			.attr("class", "fan")
+            .on('mouseover', function(d) {
+
+                // show tooltip
+               tooltip = d3.select('#tooltip-' + 'pie');
+               var mouse = d3.mouse(this);
+               console.log(mouse[0],mouse[1]);
+               tooltip.classed('hidden', false)
+                   .attr('style', 'left:' + (mouse[0] + 100) +
+                           'px; top:' + (mouse[1] + 100) + 'px')
+                   .html(function() {
+
+                       if (migrationType == 'immigration') {
+                           if (d.data.country == 'Others') {
+                               return '<strong>Total other countries:</strong> <span>' + d.data.value + '</span> <br/> <strong>'
+                               'Countries:</strong> <span> \u0024' + d.data.info + '</span>';
+                           }
+                            return '<strong>Country:</strong> <span>' + d.data.name + '</span> <br/> <strong>' +
+                            'Immigrants:</strong> <span> \u0024' + d.data.value + '</span>';
+                        }
+                        // tooltip for Happiness
+                        return '<strong>Country:</strong> <span>' + d.data.name + '</span> <br/> <strong>'
+                        'Emigrants:</strong> <span>' + d.data.value + '</span>';
+                    })
+
+            })
 
     var color = d3.scale.ordinal()
                 .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);

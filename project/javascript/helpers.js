@@ -15,6 +15,19 @@
 //     var par
 // }
 
+function addTooltip(container, type) {
+    /*
+    This function adds a tooltip to the graph.
+    container: the selected container
+    type: map, piechart or linechart
+    */
+
+    tooltip = d3.select(container).append('div')
+        .attr('class', 'hidden tooltip rem')
+        .attr('id', 'tooltip-' + type);
+
+}
+
 
 function buttonColor(element) {
     /*
