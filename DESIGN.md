@@ -44,6 +44,9 @@ Both the worldmap as the pie charts use toggle buttons. The worldmap lets the us
 ### Interactive component 2 (Slider)
 Beside the toggle button, the worldmap contains a slider which lets the user choose the year (2008-2016). In order to implement this interactive component, ...
 
+## Behind the scenes
+All visualizations are managed from whitin the index.js. Here, functions to draw or update the visualizations are called from other files. For example, worldmap.js contains a function *drawWorldmap*, which is called in the index.js file whenever needed. When a button is clicked or a slider is moved, index.js removes one or more visualizations and redraws them, calling functions in other files. Functions that are used for multiple visualizations are stored in helpers.js, and called in index.js or any of the other .js files.
+
 ## Libraries
 * D3 - //cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js
 * Datamaps javascript - /datamaps.world.min.js
