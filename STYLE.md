@@ -29,15 +29,75 @@ Student number
 Short description of the file
 ```
 
-Below, the guidelines that were followed during the project are displayed:
+Below, the guidelines for each different coding language are beeing displayed:
 
 ### Javascript
 
+#### Variable names and whitespaces around operators
+Use camelCase for variables with multiple words. Use whitespace around operators ( = + - * / ), en after comma's.
+
+```
+var previousValue = (currValue * 3) / 2;
+```
+
+#### Indentation, statement closure and quotationmarks
+Always use four spaces as indentation and end simple statements with a semicolon. Use single quotationmarks.
+
+```
+var numbers = ['Vife', 'Three', 'One'];
+
+var adress = {
+    street: 'Churchill lane',
+    city: 'London'
+};
+```
+
+#### Loops
+```
+for (var i = 0; i < 5; i++) {
+    x -= i;
+}
+```
+
+#### Conditionals
+```
+if (condition) {
+    action2
+}
+if {
+    action2
+}
+```
+Use !-marks to indicate a false condition: `!x` instead of `x == false`. In order to check the existence of an object, make a condition comparing the object with `null`. Compare numbers with `0` and strings with `""`. 
+
+Short if/else statements may be used with an `?` operator:
+
+```
+return condition ? action1 : action2;
+```
+
+
+#### line length
+If a statement takes more than 80 characters, a new line has to be included after an operator, if possible
+
+#### Comments
+Each comment has to be stated on a new line, starting with two `//` and a white space. Short single-line comments are used to describe the statement beneath it and do not start with a capital letter, and do not end with a point. Multi-line comments are used in the header to describe the file, or in functions to describe the fuction. These multi-line comments do start with a capital letter and end with a point.
+
+```
+// this is a single-line comment
+
+// Even long comments that span
+// multiple lines use the single
+// line comment form, but with a
+// capital letter and a point.
+
+```
 
 ### CSS
 
 
 ### HTML
+The document starts with `<!DOCTYPE html>`, followed by a `<html>` and `<head>` tag. In this part all libraries, CSS style sheets, scripts and other files are referenced. The `<head>` tag is followed by the `<body>` tag, which contains `<div>` elements for structuring the page. In addition, these '<div>' elements contain the buttons, sliders, etc. Furthermore, the `<body>` contains a header and a footer.
 
 ### Python
 
