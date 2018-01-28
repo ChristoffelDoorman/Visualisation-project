@@ -69,6 +69,8 @@ Today I made all visualizations interactive. Solved the problem where the piecha
 
 Today I was feeling sick and could not do so much.
 
+![Project sketch](/doc/map2010.png), ![Project sketch](/doc/map2010.png)
+
 
 ### Fri Januari 26
 
