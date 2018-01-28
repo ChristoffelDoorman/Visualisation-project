@@ -19,14 +19,14 @@ Beside these directories, the repository contains a licence file, a 'process'-fi
 The project contains scripts in four different languages: Javascript, CSS, HTML and Python. Each file contains a header, all in the same structure:
 
 ```
-*Title of the file*
+Title of the file
 
-*Programmeerproject  
+Programmeerproject  
 Minor Programmeren (UvA)  
 Autor  
-Student number*
+Student number
 
-*Short description of the file*
+Short description of the file
 ```
 
 Below, the guidelines that were followed during the project are displayed:
