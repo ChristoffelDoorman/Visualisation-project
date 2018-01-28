@@ -1,6 +1,6 @@
 # Style Guide
 
-The following guidelines are followed about the ordening and sturcrute of the Github repository and the guidlines of code:
+The following guidelines are followed about the ordening and sturcrute of the Github repository and code conventions for different languares:
 
 ## Github repository
 The github repository contains four directories:
