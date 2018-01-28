@@ -10,9 +10,10 @@ The github repository contains four directories:
   * javascript: this directory contains all javascript files used in the application. In addition, the used libraries are stored in the directory 'libraries'.
   * data: this directory contains all the json files with data used in the application.
   * css: this directory contains all style sheets for the visualisation.
+  * html: this directory contains all html files, including index.html.
 * scripts: this directory contains the scripts that are used to convert the raw-data files into useful json files.
 
-Beside these directories, the repository contains a licence file, a 'process'-file that describes the process of the project day by day, a readme file, this styleguide, a 'design' file about the design of the project and the html file (index.html).
+Beside these directories, the repository contains a licence file, a 'process'-file that describes the process of the project day by day, a readme file, this styleguide, a 'design' file about the design of the project.
 
 
 ## Code
