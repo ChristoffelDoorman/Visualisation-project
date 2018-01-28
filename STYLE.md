@@ -41,14 +41,14 @@ var previousValue = (currValue * 3) / 2;
 ```
 
 #### Indentation, statement closure and quotationmarks
-Always use four spaces as indentation and end simple statements with a semicolon. Use single quotationmarks.
+Always use four spaces as indentation and end simple statements with a semicolon. Use single quotationmarks, except around strings inside strings.
 
 ```
-var numbers = ['Vife', 'Three', 'One'];
+var numbers = ['Vife is called a "5"', 'Three', 'One'];
 
 var adress = {
-    street: 'Churchill lane',
-    city: 'London'
+    city: 'London',
+    postal: '17887'
 };
 ```
 
@@ -78,7 +78,7 @@ return condition ? action1 : action2;
 
 
 #### line length
-If a statement takes more than 80 characters, a new line has to be included after an operator, if possible
+If a statement takes more than 80 characters, a new line has to be included after an operator, if possible.
 
 #### Comments
 Each comment has to be stated on a new line, starting with two `//` and a white space. Short single-line comments are used to describe the statement beneath it and do not start with a capital letter, and do not end with a point. Multi-line comments are used in the header to describe the file, or in functions to describe the fuction. These multi-line comments do start with a capital letter and end with a point.
@@ -94,10 +94,23 @@ Each comment has to be stated on a new line, starting with two `//` and a white 
 ```
 
 ### CSS
-
+Sort declarations on alphabetical order, use whitespaces after a colon, and use very short comments where necessary.
+```
+/* WORLDMAP */
+#container1 {
+	height: 300px;
+	position: relative;
+	width: 100%;
+}
+```
 
 ### HTML
 The document starts with `<!DOCTYPE html>`, followed by a `<html>` and `<head>` tag. In this part all libraries, CSS style sheets, scripts and other files are referenced. The `<head>` tag is followed by the `<body>` tag, which contains `<div>` elements for structuring the page. In addition, these '<div>' elements contain the buttons, sliders, etc. Furthermore, the `<body>` contains a header and a footer.
+ 
 
-### Python
+## Style Guide sources
+- [Google JavaScript Style Guide](https://google.github.io/styleguide/javascriptguide.xml)
+- [MDN Coding Style](https://developer.mozilla.org/en-US/docs/JavaScript_Tips)
+- [Github minor programmeren](https://project.mprog.nl/reference/github)
+- [JavaScript Style Conventions](http://www.w3schools.com/js/js_conventions.asp)
 
