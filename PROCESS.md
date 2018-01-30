@@ -86,20 +86,34 @@ Implemented tooltips for the piecharts. A problem was that the tooltip of the em
 
 Made an update function for the linechart, so the visualization updates the data of the lines instead of removing the whole visualization
 and redrawing it. Problem was that exit() dit not work for the circles in the update function. Neighter .transition() and .duration() worked. Resolved the problem by removing all circles and redrawing them at the new location with a short delay.
-
 ```
-    happiness.selectAll("circle")
-        .data(dataset)
-        .enter()
-      .append("circle")
-        .style("visibility", "hidden")
-        .transition()
-        .duration(500)
-        .attr("class", "dot")
-        .attr("r", 3)
-        .attr("cx", function(d) { return x(d.date); })
-        .attr("cy", function(d) { return y1(d.happiness); })
-        .style("visibility", "initial");
+happiness.selectAll("circle")
+    .data(dataset)
+    .transition()
+    .duration(500)
+    .enter()
+  .append("circle")
+    .attr("class", "dot")
+    .attr("r", 3)
+    .attr("cx", function(d) { return x(d.date); })
+    .attr("cy", function(d) { return y1(d.happiness); })
+```
+Solution:
+```
+d3.selectAll("circle").remove();
+    
+happiness.selectAll("circle")
+    .data(dataset)
+    .enter()
+  .append("circle")
+     .style("visibility", "hidden")
+     .transition()
+     .delay(500)
+     .attr("class", "dot")
+     .attr("r", 3)
+     .attr("cx", function(d) { return x(d.date); })
+     .attr("cy", function(d) { return y1(d.happiness); })
+     .style("visibility", "initial");
 ```
 
 
