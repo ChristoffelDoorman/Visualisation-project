@@ -1,11 +1,11 @@
 # Daily resume
 
-### Mon January 8
+### Day 1: Mon January 8
 
 Initialized the project. Create the GitHub repository, READMY, LICENSE. Chosed the project topic and searched for supportive data. Created project proposal.
 
 
-### Tue January 9
+### DAY 2: Tue January 9
 
 Searched for datasets. Had to adjust project proposal. One more visualisation different from map, scatterplot and linechart. Found one extra dataset about immigration and emigration that makes the project a bit more interesting. Decided to make two piecharts: one with countries of origin, one of countries of destination in 2010 or 2015.
 
@@ -75,3 +75,9 @@ Today I was feeling sick and could not do so much. Noted that I had to search fo
 ### Fri Januari 26
 
 The same as yesterday.
+
+
+### Mon Januari 29
+
+
+### Tue Januari 30
