@@ -67,12 +67,14 @@ This file
 
                     <div id="container1">
 
-                        <div class='well well-sm' id='slider-well'>
-                            <div class="slidecontainer">
+                        <!-- <div class='well well-sm' id='slider-well'> -->
+                        <div class="slidecontainer">
+                            <span style="padding-right:30px; ">2008</span>
                                 <input type="range" min="2008" max="2016" value="2012" class="slider" id="slider-years">
-                                <!-- <p>Value: <span id="demo"></span></p> -->
-                            </div>
+                            <span id="right-value">2016</span>
+                            <!-- <p>Value: <span id="demo"></span></p> -->
                         </div>
+                        <!-- </div> -->
                     </div>
                 </div>
 
@@ -90,7 +92,12 @@ This file
 
 
                 <div class="col-md-6">
-                    <div id="container4"></div>
+                    <div id="container4">
+                        <div class="btn-group">
+                            <button type="button" value="0" class="btn btn-default pie" id='pie0'>2010</button>
+                            <button type="button" value="1" class="btn btn-default pie start" id='pie1'>2015</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 

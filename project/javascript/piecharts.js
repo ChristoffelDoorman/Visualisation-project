@@ -1,11 +1,9 @@
 /*
 index.js
-
 Programmeerproject
 Minor Programmeren (UvA)
 Author: Christoffel Doorman
 Student number: 10580557
-
 This file contains two functions: a function that builds and updates the
 worldmap, and a function that builds the legend.
 */
@@ -29,12 +27,7 @@ function drawPiechart(data, year, country, migrationType){
         d.value = +d.value;
     })
 
-    // calculate total immigrants or emigrants
-    var totalMigration = 0;
-
-    for (var i = 0; i < data.length; i++) {
-        totalMigration += data[i]['value'];
-    }
+    var totalMigration = countMigration(data);
 
     // append svg
     if (migrationType == 'immigration') {
@@ -43,6 +36,7 @@ function drawPiechart(data, year, country, migrationType){
 
         var piechart = d3.select('#container3').append('svg')
             .attr('class', 'piechart rem')
+            .attr('id', 'immigrationpie')
             .attr('height', 400)
             .attr('width', 400)
             .append('g')
@@ -55,6 +49,7 @@ function drawPiechart(data, year, country, migrationType){
 
         var piechart = d3.select('#container4').append('svg')
             .attr('class', 'piechart rem')
+            .attr('id', 'emigrationpie')
             .attr('height', 400)
             .attr('width', 400)
             .append('g')
@@ -74,14 +69,6 @@ function drawPiechart(data, year, country, migrationType){
 			.sort(null)
 			.value(function(d){ return d.value; });
 
-    // piechart.append('g')
-    //         .attr('class', 'slices')
-    //
-    // var key = function(d){ return d.data.label; };
-    //
-    // var slice = svg.select(".slices").selectAll("path.slice")
-	// 	.data(pie(data), key);
-
     var g = piechart.selectAll(".fan")
 			.data(pie(data))
 			.enter()
@@ -92,7 +79,6 @@ function drawPiechart(data, year, country, migrationType){
                 // show tooltip
                tooltip = d3.select('#tooltip-' + 'pie');
                var mouse = d3.mouse(this);
-               console.log(mouse[0],mouse[1]);
                tooltip.classed('hidden', false)
                    .attr('style', 'left:' + (mouse[0] + 100) +
                            'px; top:' + (mouse[1] + 100) + 'px')
@@ -124,4 +110,18 @@ function drawPiechart(data, year, country, migrationType){
         .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
         .style("text-anchor", "middle")
         .text(function(d) { return d.data.country; });
+}
+
+function updatePiechart() {
+    
+}
+
+
+function countMigration(data) {
+    var totalMigration = 0;
+    for (var i = 0; i < data.length; i++) {
+        totalMigration += data[i]['value'];
+    }
+
+    return totalMigration
 }

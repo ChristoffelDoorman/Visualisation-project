@@ -13,8 +13,6 @@ worldmap, and a function that builds the legend.
 
 function drawWorldmap(mapData, migrationData, year, category){
 
-    var parseMoney = function(d) { return d3.format(",")(d) + ' Intl$'; }
-
     // select chosen year and category
     var data = mapData[year][category];
 
@@ -72,14 +70,14 @@ function drawWorldmap(mapData, migrationData, year, category){
                 .on('click', function(geography) {
 
                     d3.selectAll('.piechart').remove();
-                    d3.select('.linechart').remove();
+                    // d3.select('.linechart').remove();
 
                     currCountry = geography.id;
 
                     // drawLinechart(mapData, currCountry);
-                    drawLinechart(mapData, currCountry)
-                    drawPiechart(migrationData, '2010', currCountry, 'emigration');
-                    drawPiechart(migrationData, '2010', currCountry, 'immigration');
+                    updateLinechart(mapData, currCountry)
+                    drawPiechart(migrationData, pieYear, currCountry, 'emigration');
+                    drawPiechart(migrationData, pieYear, currCountry, 'immigration');
 
                 })
         },

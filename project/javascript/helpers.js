@@ -15,6 +15,10 @@
 //     var par
 // }
 
+function parseMoney(value) {
+    return d3.format(",.0f")(value) + ' Intl$';
+}
+
 function addTooltip(container, type) {
     /*
     This function adds a tooltip to the graph.
