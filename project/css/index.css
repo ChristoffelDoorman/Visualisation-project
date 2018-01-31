@@ -35,11 +35,27 @@
 
 /* WORLDMAP */
 #container1 {
-	border-radius: 20px;
-	border: 2px solid #73AD21;
-	height: 300px;
+	/* border: 2px solid #73AD21; */
+	height: 400px;
 	position: relative;
 	width: 100%;
+}
+
+.datamaps-legend {
+	position: fixed;
+  	top: -8px;
+  	margin-left: 10%;
+  	bottom: 565px;
+  	width: 80%;
+}
+
+.datamaps-legend h2 {
+	text-align: center;
+	font-size: 20px;
+}
+
+.datamaps-legend dl {
+	margin-left: 40px;
 }
 
 
@@ -70,8 +86,6 @@
 	width: 60%;
 }
 
-
-
 .slider:hover {
     opacity: 1;
 }
@@ -82,7 +96,7 @@
 
 /* LINECHART */
 #container2 {
-	height: 330px;
+	height: 400px;
 	position: relative;
 	width: 100%;
 }
@@ -93,6 +107,9 @@
     stroke: grey;
     stroke-width: 1;
     shape-rendering: crispEdges;
+}
+.axis text {
+	font-size: 10px;
 }
 
 .gdp {
@@ -109,19 +126,24 @@
 	fill: none;
 }
 
-.line-gap {
-	stroke-dasharray: 4,4;
-}
-
 .dot {
 	fill: white;
 }
 
-/* #gdpline {
-	fill: none;
-  	stroke: #000;
-	stroke-width: 2px;
-} */
+.line-legend {
+	font-size: 12px;
+}
+
+.legend-box {
+  fill: white;
+  stroke: none;
+  opacity:0.8;
+}
+
+/* NO DATA MESSAGE */
+#no-data {
+	font-size: 20px;
+}
 
 
 
@@ -138,4 +160,15 @@
 .piechart {
 	font: "Times New Roman", Times, serif;
 	font-size: 16px;
+	top: 100px;
+}
+
+.pieTitle {
+	fill: black;
+}
+
+/*FOOTER*/
+footer {
+  	background-color: #f2f2f2;
+  	padding: 25px;
 }

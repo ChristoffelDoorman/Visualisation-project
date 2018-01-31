@@ -86,3 +86,17 @@ function buttonColor(element) {
     prevValue = currValue;
     prevClass = currClass.split(' ')[2];
 }
+
+function displayNoData(container) {
+    d3.select('#' + container)
+        .append('svg')
+        .attr('class', 'no-data')
+        .attr('width', '100%')
+        .attr('height', '100%')
+        .append("text")
+        .attr('id', 'no-data')
+        .attr("dx", (width / 2))
+        .attr("dy", 0 - (height / 2))
+        .attr("text-anchor", "middle")
+        .text("Sorry, no data")
+}

@@ -20,6 +20,8 @@ This file
         <link rel="stylesheet" href="../css/bootstrap.min.css"/>
         <link rel="stylesheet" href="../css/bootstrap-slider.css"/>
         <link rel="stylesheet" href="../css/index.css"/>
+        <!-- favicon -->
+        <link rel="icon" href="../../doc/favicon.png" type="image/gif">
         <!-- D3 -->
         <script type="text/javascript" src="../javascript/libraries/d3.min.js"></script>
         <!-- D3 queue -->
@@ -33,6 +35,8 @@ This file
         <script type="text/javascript" src="../javascript/libraries/jquery-ui.min.js"></script>
         <!-- Bootstrap javascript -->
         <script type="text/javascript" src="../javascript/libraries/bootstrap.min.js"></script>
+        <!-- d3 Legend -->
+        <script type="text/javascript" src="../javascript/libraries/d3.legend.js"></script>
         <!-- Country codes -->
         <script type="text/javascript" src="../../scripts/country_codes.js"></script>
         <!-- Javascript files project -->
@@ -59,7 +63,7 @@ This file
 
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-7">
 
                     <div class="btn-group">
                         <button type="button" value="0" class="btn btn-default map start" id='map0'>GDP</button>
@@ -75,7 +79,7 @@ This file
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div id="container2"></div>
                 </div>
 
@@ -83,21 +87,32 @@ This file
 
 
             <div class="row">
-                <div class="col-md-6">
+
+                <div class="col-md-5">
                     <div id="container3"></div>
                 </div>
 
-
-                <div class="col-md-6">
-                    <div id="container4">
-                        <div class="btn-group">
-                            <button type="button" value="0" class="btn btn-default pie" id='pie0'>2010</button>
-                            <button type="button" value="1" class="btn btn-default pie start" id='pie1'>2015</button>
-                        </div>
+                <div class="col-md-2">
+                    <div class="btn-group">
+                        <button type="button" value="0" class="btn btn-default pie" id='pie0'>2010</button>
+                        <button type="button" value="1" class="btn btn-default pie start" id='pie1'>2015</button>
                     </div>
+                </div>
+
+
+                <div class="col-md-5">
+                    <div id="container4"></div>
                 </div>
             </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <footer class="container-fluid text-center">
+                    <p>Made by Christoffel Doorman, 10654976</p>
+                </footer>
+            </div>
         </div>
 
     </body>

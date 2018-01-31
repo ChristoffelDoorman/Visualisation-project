@@ -25,9 +25,9 @@ var categories = ['gdp', 'happiness'];
 var prevValue;
 
 // set margin, width and height
-var margin = {top: 50, right: 30, bottom: 30, left: 40},
-    width = 560 - margin.right - margin.left,
-    height = 400 - margin.top - margin.bottom;
+var margin = {top: 50, right: 30, bottom: 30, left: 40};
+    // width = 560 - margin.right - margin.left,
+    // height = 400 - margin.top - margin.bottom;
 
 
 window.onload = function(){
@@ -81,6 +81,7 @@ window.onload = function(){
         slider.oninput = function() {
 
             d3.select('.datamap').remove();
+            d3.select('.datamaps-legend').remove();
 
             var indexYear = slider.value
 
@@ -112,11 +113,9 @@ window.onload = function(){
                 buttonColor(this);
 
                 // remove all the visualizations
-                d3.select('.datamap').remove()
-                d3.selectAll('.piechart').remove()
-                // d3.select('.linechart').remove()
-                // d3.select('.datamaps-legend').remove()
-                // d3.selectAll('.rem').remove()
+                d3.select('.datamap').remove();
+                d3.select('.datamaps-legend').remove();
+                d3.selectAll('.piechart').remove();
 
                 // store the selected category by the user
                 var indexCategory = this.getAttribute('value');

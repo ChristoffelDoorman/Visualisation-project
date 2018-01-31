@@ -28,10 +28,6 @@ function drawPiechart(data, year, country, migrationType) {
         d.value = +d.value;
     })
 
-
-
-    console.log(typeof(data))
-
     var othersLabel = makeOthersLabel(data);
 
 
@@ -45,10 +41,18 @@ function drawPiechart(data, year, country, migrationType) {
         var piechart = d3.select('#container3').append('svg')
             .attr('class', 'piechart rem')
             .attr('id', 'immigrationpie')
-            .attr('height', 400)
-            .attr('width', 400)
+            .attr('height', 480)
+            .attr('width', '100%')
             .append('g')
-            .attr('transform', 'translate(' + 200 + ',' + 200 + ')')
+            .attr('transform', 'translate(' + 250 + ',' + 250 + ')')
+
+        piechart.append("text")
+            .attr('class', 'pieTitle')
+            .attr('id', 'immigrationTitle')
+            .attr("y", -height/1.8)
+            .attr("text-anchor", "middle")
+            .style("font-size", "20px")
+            .text("Countries of origin")
     }
 
     if (migrationType == 'emigration') {
@@ -58,10 +62,18 @@ function drawPiechart(data, year, country, migrationType) {
         var piechart = d3.select('#container4').append('svg')
             .attr('class', 'piechart rem')
             .attr('id', 'emigrationpie')
-            .attr('height', 400)
-            .attr('width', 400)
+            .attr('height', 480)
+            .attr('width', '100%')
             .append('g')
-            .attr('transform', 'translate(' + 200  + ',' + 200 + ')')
+            .attr('transform', 'translate(' + 250  + ',' + 250 + ')')
+
+        piechart.append("text")
+            .attr('class', 'pieTitle')
+            .attr('id', 'immigrationTitle')
+            .attr("y", -height/1.8)
+            .attr("text-anchor", "middle")
+            .style("font-size", "20px")
+            .text("Countries of destination")
     }
 
     // display total emigration or emigration inside piechart

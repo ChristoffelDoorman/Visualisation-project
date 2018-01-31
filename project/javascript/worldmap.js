@@ -16,46 +16,58 @@ function drawWorldmap(mapData, migrationData, year, category){
     // select chosen year and category
     var data = mapData[year][category];
 
+    // create dictionary usable for datamaps
     var dataset = {};
-
-    var knownValues = Object.keys(data).map(function (key) { return data[key]; });
-
-    // delete unknown values from array
-    for (i = 0; i < knownValues.length; i++) {
-        if (knownValues[i] == 'unknown') {
-            knownValues.splice(i, 1)
-            i -= 1;
-        }
-    }
-
-    var minValue = Math.min.apply(null, knownValues);
-    var maxValue = Math.max.apply(null, knownValues);
-
-    var stepsize = (maxValue - minValue) / 5;
-
-    // create color palette function
-    // color can be whatever you wish
-    var paletteScale = d3.scale.linear()
-            .domain([minValue, maxValue])
-            .range(["#99ff33", "#006600"]);
-            // .range('#d3d3d3', '#bdbdbd', '#a8a8a8', '#939393', '#7e7e7e');
-
-
 
     // fill dataset in appropriate format
     Object.keys(data).forEach(function(item) {
 
         var value = data[item]
 
-        console.log(data)
+        if (category == 'gdp') {
 
+            if (value == "unknown") {
+                fillColor = "default-fill";
+            } else if (value < 5000) {
+                fillColor = "A";
+            } else if (value < 10000) {
+                fillColor = "B";
+            } else if (value < 15000) {
+                fillColor = "C";
+            } else if (value < 30000) {
+                fillColor = "D";
+            } else if (value < 50000) {
+                fillColor = "E";
+            } else if (value >= 50000) {
+                fillColor = "F";
+            }
+        }
 
-        dataset[item] = {category: value, fillColor: paletteScale(value)};
+        if (category == 'happiness') {
+
+            if (value == "unknown") {
+                fillColor = "default-fill";
+            } else if (value < 4) {
+                fillColor = "A";
+            } else if (value < 5) {
+                fillColor = "B";
+            } else if (value < 6) {
+                fillColor = "C";
+            } else if (value < 7) {
+                fillColor = "D";
+            } else if (value < 8) {
+                fillColor = "E";
+            } else if (value >= 8) {
+                fillColor = "F";
+            }
+        }
+
+        dataset[item] = {category: value, fillKey: fillColor};
 
     });
 
 
-    var map = new Datamap({
+    map = new Datamap({
         element: document.getElementById('container1'),
 
         scope: 'world',
@@ -64,6 +76,12 @@ function drawWorldmap(mapData, migrationData, year, category){
         },
 
         fills: {
+            A:  '#b3c9db',
+            B:  '#8daec9',
+            C:  '#6693b7',
+            D:  '#4179a5',
+            E:  '#3a6c94',
+            F:  '#2d5473',
             defaultFill: '#bdbdbd'
         },
 
@@ -76,7 +94,10 @@ function drawWorldmap(mapData, migrationData, year, category){
 
                     // if no data, alert user and draw previous piechart
                     if (migrationData[pieYear][currCountry] == undefined) {
-                        alert("Sorry, there is no data about this country.");
+                        d3.selectAll('.piechart').remove();
+                        displayNoData('container3');
+                        displayNoData('container4');
+                        updateLinechart(mapData, currCountry);
 
 
                     } else if (migrationData[pieYear][currCountry]['emigration'] == undefined) {
@@ -108,6 +129,9 @@ function drawWorldmap(mapData, migrationData, year, category){
             borderOpacity: 1,
             borderColor: '#FDFDFD',
             popupTemplate: function(geography, data) {
+                if (data['category'] == "unknown") {
+                    return '<div class="hoverinfo"><strong>' + geography.properties.name + ': unknown</strong></div>';
+                }
                 if (category == 'gdp') {
                     return '<div class="hoverinfo"><strong>' + geography.properties.name + ': ' + parseMoney(data['category']) + '</strong></div>';
                 }
@@ -126,40 +150,42 @@ function drawWorldmap(mapData, migrationData, year, category){
         data: dataset
 
     });
-};
 
+    drawLegend(category);
+}
 
+/*
+This function creates the legend for the worldmap.
+category: gdp or happiness
+*/
 function drawLegend(category) {
-    /*
-    This function creates the legend for the worldmap.
-    category: Obesity, Overweight or BMI
-    */
 
-    // BMI
     if (category == 'gdp') {
         map.legend({
-            legendTitle: 'GDP per capita',
-            defaultFillName: 'unknown',
+            legendTitle: 'GDP per capita (Intl$) from 2008 till 2016',
+            defaultFillName: 'No data',
             labels: {
-                A: '< 22.5',
-                B: '22.5 - 25',
-                C: '25 - 27.5',
-                D: '27.5 - 30',
-                E: '> 30'
+                A: '< 5K',
+                B: '5 - 1K',
+                C: '10 - 15K',
+                D: '15 - 30K',
+                E: '30 - 50K',
+                F: '> 50K'
             }
         });
     }
-    // Overweight or Obesity
-    else {
+
+    if (category == 'happiness') {
         map.legend({
-            legendTitle: 'Percentage of ' + category + ', ages 18+, in the World',
+            legendTitle: 'Happiness rate from 2008 till 2016',
             defaultFillName: 'No Data',
             labels: {
-                A: '< 20',
-                B: '20 - 40',
-                C: '40 - 60',
-                D: '60 - 80',
-                E: '80 - 100'
+                A: '< 4',
+                B: '4 - 5',
+                C: '5 - 6',
+                D: '6 - 7',
+                E: '7 - 8',
+                F: '> 8'
             }
         });
     }

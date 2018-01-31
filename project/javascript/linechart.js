@@ -4,15 +4,17 @@ var linechart;
 
 function drawLinechart() {
 
+    lineData['width'] = width = 460;
+    lineData['height'] = height = 400;
+
     // add scales
-    lineData["x"] = x = d3.time.scale().range([0, width]);
-    lineData["y0"] = y0 = d3.scale.linear().range([height, 0]);
-    lineData["y1"] = y1 = d3.scale.linear().range([height, 0]);
+    lineData["x"] = x = d3.time.scale().range([0, width / 1.15 ]);
+    lineData["y0"] = y0 = d3.scale.linear().range([height / 1.3, 70]);
+    lineData["y1"] = y1 = d3.scale.linear().range([height / 1.3, 70]);
 
     // add axis
     lineData["xAxis"] = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(9)
-        .ticks(d3.timeYear);
+        .orient("bottom").ticks(d3.timeYear);
 
     lineData["y0Axis"] = d3.svg.axis().scale(y0)
         .orient("left").ticks(5);
@@ -35,8 +37,8 @@ function drawLinechart() {
     linechart = d3.select('#container2')
         .append('svg')
         .attr('class', 'linechart rem')
-        .attr('width', '100%')
-        .attr('height', '100%')
+        .attr('width', width)
+        .attr('height', height)
         .append('g')
         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
@@ -46,28 +48,29 @@ function drawLinechart() {
     // append title
     linechart.append("text")
         .attr('id', 'linechartTitle')
-        .attr("x", (width / 2))
-        .attr("y", 0 - (margin.top / 2))
+        .attr("x", (width / 2.3))
+        .attr("y", 15)
         .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .style("text-decoration", "underline")
+        .style("font-size", "20px")
 
     // append line paths
     linechart.append('g')
         .attr('class', 'gdp')
         .append("path")
         .attr("class", "line")
+        .attr("data-legend", function(d) { return 'GDP'})
 
     linechart.append('g')
         .attr('class', 'happiness')
         .append("path")
-        .attr("class", "line");
+        .attr("class", "line")
+        .attr("data-legend", function(d) { return 'Happiness'});
 
     // append all axis
     linechart.append("g")
         .attr('class', 'axis')
         .attr('id', 'xaxis')
-        .attr("transform", "translate(0," + height + ")");
+        .attr("transform", "translate(0," + height / 1.3 + ")");
 
     linechart.append("g")
         .attr('class', 'axis')
@@ -76,7 +79,12 @@ function drawLinechart() {
     linechart.append("g")
         .attr('class', 'axis')
         .attr('id', 'y1axis')
-        .attr("transform", "translate(" + width + " ,0)");
+        .attr("transform", "translate(" + width / 1.15 + " ,0)");
+
+    // append legend
+    linechart.append("g")
+        .attr("class", "line-legend")
+        .attr("transform", "translate(-10, 50)");
 }
 
 
@@ -92,6 +100,10 @@ function updateLinechart(data, country) {
 
     // structure data in useable format
     var dataset = prepareLineData(data, country);
+
+    if (checkData(dataset)[0] == false) {
+        console.log(dataset)
+    }
 
     // scale the range of the data
     lineData.x.domain(d3.extent(dataset, function(d) { return d.date; }));
@@ -125,6 +137,8 @@ function updateLinechart(data, country) {
 
     // update circles on data lines
     d3.selectAll("circle").remove();
+
+    console.log(dataset)
 
     gdp.selectAll("circle")
         .data(dataset)
@@ -182,9 +196,14 @@ function updateLinechart(data, country) {
         .on("mouseout", function() {
             mouseout(lineData.tooltip);
         });
+
+    // call legend
+    linechart.select('.line-legend')
+        .call(d3.legend);
 }
 
 function lineLegend() {
+
 
 }
 
@@ -192,6 +211,22 @@ function updateLineLegend() {
 
 }
 
+function checkData(data) {
+    // check of entire gdp of happiness data is unkown
+    var gdpExists = false;
+    var happinessExists = false;
+    data.forEach(function(d) {
+        if (d.gdp != null) {
+            gdpExists = true;
+        }
+        if (d.happiness != null) {
+            happinessExists = true;
+        }
+    })
+
+    return [gdpExists, happinessExists];
+
+}
 
 function prepareLineData(data, country) {
 
