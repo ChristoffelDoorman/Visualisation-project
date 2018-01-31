@@ -1,23 +1,27 @@
-// function drawPage() {
-//
-//     // append svg for both piecharts
-//     var piechart = d3.select('#container3').append('svg')
-//         .attr('class', 'piechart rem')
-//         .attr('height', 800)
-//         .attr('width', 800)
-//         .append('g')
-//         .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
-//
-// }
 
-
-// function prepareData(data) {
-//     var par
-// }
 
 function parseMoney(value) {
     return d3.format(",.0f")(value) + ' Intl$';
 }
+
+function parseRate(value) {
+    return d3.format('.1f')(value);
+}
+
+function parseNumber(value) {
+    return d3.format(',')(value);
+}
+
+function findCountryName(country) {
+    for (i = 0; i < countryCodes.length; i++) {
+        if (countryCodes[i][1] == country) {
+            return countryCodes[i][2];
+        }
+    }
+    // if country not in list, return code
+    return country;
+}
+
 
 function addTooltip(container, type) {
     /*
@@ -26,18 +30,39 @@ function addTooltip(container, type) {
     type: map, piechart or linechart
     */
 
-    tooltip = d3.select(container).append('div')
-        .attr('class', 'hidden tooltip rem')
-        .attr('id', 'tooltip-' + type);
+    var tooltip = d3.select(container).append('div')
+        .attr('class', 'tooltip')
+        .attr('id', 'tooltip-' + type)
+        .style("display", "none");
+
+    return tooltip;
 
 }
 
 
+function mouseover(tooltip) {
+    tooltip.transition()
+        .duration(200)
+        .style("display", "inline");
+}
+
+function mousemove(mouse, tooltip) {
+    tooltip.style("left", (mouse[0]) + "px")
+        .style("top", (mouse[1]) + "px");
+
+}
+
+function mouseout(tooltip) {
+    tooltip.transition()
+        .duration(100)
+        .style("display", "none");
+}
+
+/*
+This function colors the buttons whether it is selected or not
+element: this
+*/
 function buttonColor(element) {
-    /*
-    This function colors the buttons whether it is selected or not
-    element: this
-    */
 
     currValue = element.getAttribute('value');
     currClass = element.getAttribute('class');

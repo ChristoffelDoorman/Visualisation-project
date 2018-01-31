@@ -95,7 +95,7 @@ window.onload = function(){
                 d3.selectAll('.piechart').remove();
 
                 var indexPieYear = this.getAttribute('value');
-                pieYear = pieYears[indexPieYear]
+                pieYear = pieYears[indexPieYear];
 
                 drawPiechart(migrationData, pieYear, currCountry, 'emigration');
                 drawPiechart(migrationData, pieYear, currCountry, 'immigration');

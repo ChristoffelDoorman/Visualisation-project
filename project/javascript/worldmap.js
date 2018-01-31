@@ -37,7 +37,7 @@ function drawWorldmap(mapData, migrationData, year, category){
     // color can be whatever you wish
     var paletteScale = d3.scale.linear()
             .domain([minValue, maxValue])
-            .range(["#011f4b", "#b3cde0"]);
+            .range(["#99ff33", "#006600"]);
             // .range('#d3d3d3', '#bdbdbd', '#a8a8a8', '#939393', '#7e7e7e');
 
 
@@ -46,6 +46,9 @@ function drawWorldmap(mapData, migrationData, year, category){
     Object.keys(data).forEach(function(item) {
 
         var value = data[item]
+
+        console.log(data)
+
 
         dataset[item] = {category: value, fillColor: paletteScale(value)};
 
@@ -61,7 +64,7 @@ function drawWorldmap(mapData, migrationData, year, category){
         },
 
         fills: {
-            defaultFill: '#D3D3D3'
+            defaultFill: '#bdbdbd'
         },
 
 
@@ -69,15 +72,32 @@ function drawWorldmap(mapData, migrationData, year, category){
             d3.selectAll('.datamaps-subunit')
                 .on('click', function(geography) {
 
-                    d3.selectAll('.piechart').remove();
-                    // d3.select('.linechart').remove();
-
                     currCountry = geography.id;
 
-                    // drawLinechart(mapData, currCountry);
-                    updateLinechart(mapData, currCountry)
-                    drawPiechart(migrationData, pieYear, currCountry, 'emigration');
-                    drawPiechart(migrationData, pieYear, currCountry, 'immigration');
+                    // if no data, alert user and draw previous piechart
+                    if (migrationData[pieYear][currCountry] == undefined) {
+                        alert("Sorry, there is no data about this country.");
+
+
+                    } else if (migrationData[pieYear][currCountry]['emigration'] == undefined) {
+                        alert("There is no emigration data about this country.")
+                        d3.selectAll('.piechart').remove();
+                        drawPiechart(migrationData, pieYear, currCountry, 'immigration');
+
+
+                    } else if (migrationData[pieYear][currCountry]['immigration'] == undefined) {
+                        alert("There is no immigration data about this country.")
+                        d3.selectAll('.piechart').remove();
+                        drawPiechart(migrationData, pieYear, currCountry, 'emigration');
+                    } else {
+
+                        d3.selectAll('.piechart').remove();
+
+                        // drawLinechart(mapData, currCountry);
+                        updateLinechart(mapData, currCountry)
+                        drawPiechart(migrationData, pieYear, currCountry, 'emigration');
+                        drawPiechart(migrationData, pieYear, currCountry, 'immigration');
+                    }
 
                 })
         },

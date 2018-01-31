@@ -28,7 +28,7 @@ def read_row(year, data, total_emigrations):
         # Add existing data to dictionary
         if country_code in data[year]:
 
-            for i in range(6, 238):
+            for i in range(6, len(headers)):
                 total_emigration = total_emigrations.get(headers[i], "none")
                 if row[i] != "..":
 
@@ -75,25 +75,25 @@ with open("../raw_data/migration_cleandata.csv") as infile:
                 headers[i] = country[1]
 
     # Create dictionary structure
-    for i in range(6, 238):
+    for i in range(6, len(headers)):
         data["2010"][headers[i]] = {"immigration": [], "emigration": [], "name": headernames[i]}
         data["2015"][headers[i]] = {"immigration": [], "emigration": [], "name": headernames[i]}
 
     # Read data of 2010 and 2015
     for row in reader:
         if row[0] == "2010_total" and row[2] == "total_emigration":
-            for i in range(6, 238):
+            for i in range(6, len(headers)):
                 total_emigrations_2010[headers[i]] = row[i]
 
         if row[0] == "2015_total" and row[2] == "total_emigration":
-            for i in range(6, 238):
+            for i in range(6, len(headers)):
                 total_emigrations_2015[headers[i]] = row[i]
 
         read_row("2010", data, total_emigrations_2010)
 
         read_row("2015", data, total_emigrations_2015)
 
-    for i in range(6, 237):
+    for i in range(6, len(headers)):
         if headers[i] in emigration_dict["2010"]:
             insert_emigration("2010")
 

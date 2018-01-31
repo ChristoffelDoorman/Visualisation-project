@@ -15,7 +15,7 @@ with open('../raw_data/happiness.csv', 'rb') as infile:
             data[row[2]] = {"gdp": {}, "happiness": {}}
             years.append(row[2])
 
-        elif (row[2] in data) and (row[0] or row[1] in country_codes):
+        if (row[2] in data) and (row[0] or row[1] in country_codes):
             data[row[2]]["happiness"][row[1]] = row[3]
 
     # Append countries with unknown data

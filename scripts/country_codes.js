@@ -4,9 +4,9 @@
 
 // List of ISO 3166-1 alpha 2 country codes and
 // their respective alpha 3 country codes and country names.
-var country_codes = [
+var countryCodes = [
     ["af", "AFG", "Afghanistan"],
-    ["ax", "ALA", "�land Islands"],
+    ["ax", "ALA", "Aland Islands"],
     ["al", "ALB", "Albania"],
     ["dz", "DZA", "Algeria"],
     ["as", "ASM", "American Samoa"],
@@ -185,11 +185,11 @@ var country_codes = [
     ["pt", "PRT", "Portugal"],
     ["pr", "PRI", "Puerto Rico"],
     ["qa", "QAT", "Qatar"],
-    ["re", "REU", "R�union"],
+    ["re", "REU", "Reunion"],
     ["ro", "ROU", "Romania"],
     ["ru", "RUS", "Russian Federation"],
     ["rw", "RWA", "Rwanda"],
-    ["bl", "BLM", "Saint Barth�lemy"],
+    ["bl", "BLM", "Saint Barthelemy"],
     ["sh", "SHN", "Saint Helena, Ascension and Tristan da Cunha"],
     ["kn", "KNA", "Saint Kitts and Nevis"],
     ["lc", "LCA", "Saint Lucia"],

@@ -40,8 +40,8 @@ function drawLinechart() {
         .append('g')
         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-    lineData["tooltip"] = d3.select('#container2').append('div')
-        .attr('class', 'tooltip');
+    // add tooltip
+    lineData["tooltip"] = addTooltip('#container2', 'line');
 
     // append title
     linechart.append("text")
@@ -84,9 +84,11 @@ function updateLinechart(data, country) {
 
     var formatTime = d3.time.format("%Y");
 
+    var countryName = findCountryName(country);
+
     // update linechart title
     d3.select('#linechartTitle')
-        .text("GDP and happiness " + country);
+        .text("GDP and happiness " + countryName);
 
     // structure data in useable format
     var dataset = prepareLineData(data, country);
@@ -132,26 +134,26 @@ function updateLinechart(data, country) {
         .transition()
         .delay(500)
         .attr("class", "dot")
-        .attr("r", 3)
+        .attr("r", 4)
         .attr("cx", function(d) { return x(d.date); })
         .attr("cy", function(d) { return y0(d.gdp); })
         .style("visibility", "initial")
 
     gdp.selectAll('circle')
         .on('mouseover', function(d) {
-            lineData.tooltip.transition()
-                .duration(200)
-                .style('opacity', .9);
-            lineData.tooltip.html('Year: ' + formatTime(d.date) + '<br>' +
-                    'GDP: ' + parseMoney(d.gdp))
-                // .style('left', (d3.event.pageX) + "px")
-                // .style('top', (d3.event.pageY - 28) + "px");
+
+            mouseover(lineData.tooltip);
+
+            lineData.tooltip.html('<b>Year: </b>' + formatTime(d.date) + '<br>' +
+                    '<b>GDP: </b>' + parseMoney(d.gdp))
         })
-        .on("mouseout", function(d) {
-            lineData.tooltip.transition()
-                .duration(500)
-                .style("opacity", 0);
+        .on('mousemove', function() {
+            var mouse = d3.mouse(this);
+            mousemove(mouse, lineData.tooltip);
         })
+        .on("mouseout", function() {
+            mouseout(lineData.tooltip);
+        });
 
     happiness.selectAll("circle")
         .data(dataset)
@@ -161,25 +163,33 @@ function updateLinechart(data, country) {
         .transition()
         .delay(500)
         .attr("class", "dot")
-        .attr("r", 3)
+        .attr("r", 4)
         .attr("cx", function(d) { return x(d.date); })
         .attr("cy", function(d) { return y1(d.happiness); })
         .style("visibility", "initial");
 
     happiness.selectAll('circle')
         .on('mouseover', function(d) {
-            lineData.tooltip.transition()
-                .duration(200)
-                .style('opacity', .9);
-            lineData.tooltip.html('Year: ' + formatTime(d.date) + '<br>' + 'GDP: ' + d.happiness)
-                // .style('left', (d3.event.pageX) + "px")
-                // .style('top', (d3.event.pageY - 28) + "px")
+
+            mouseover(lineData.tooltip);
+
+            lineData.tooltip.html('<b> Year: </b>' + formatTime(d.date) + '<br>' + '<b>Happiness: </b>' + parseRate(d.happiness));
         })
-        .on("mouseout", function(d) {
-            lineData.tooltip.transition()
-                .duration(500)
-                .style("opacity", 0);
+        .on('mousemove', function() {
+            var mouse = d3.mouse(this);
+            mousemove(mouse, lineData.tooltip);
         })
+        .on("mouseout", function() {
+            mouseout(lineData.tooltip);
+        });
+}
+
+function lineLegend() {
+
+}
+
+function updateLineLegend() {
+
 }
 
 
