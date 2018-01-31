@@ -121,3 +121,8 @@ happiness.selectAll("circle")
 
 
 ### Day 19 - Thu Februari 1
+
+Todo:
+- cirkels bij no data weghalen
+- tooltip slider
+- andere kleur happiness kaart
