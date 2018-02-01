@@ -22,7 +22,7 @@ This file contains all style attributes for the piecharts visualisations.
 }
 
 .piechart {
-	font: "Times New Roman", Times, serif;
+	font: Sans-serif;
 	font-size: 16px;
 	top: 100px;
 }

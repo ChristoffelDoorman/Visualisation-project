@@ -1,3 +1,13 @@
+# happiness_gdp_csv2json.py
+#
+# Programmeerproject
+# Minor Programmeren (UvA)
+# Author: Christoffel Doorman
+# Student number: 10580557
+#
+# This file converts a csv file into a json file in a usable format.
+# ------------------------------------------------------------------------------
+
 import csv, json
 from country_codes import *
 

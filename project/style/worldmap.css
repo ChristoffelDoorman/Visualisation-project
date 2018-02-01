@@ -11,7 +11,6 @@ This file contains all style attributes for the visualisation of the worldmap.
 
 /* WORLDMAP */
 #container1 {
-	/* border: 2px solid #73AD21; */
 	height: 400px;
 	position: relative;
 	width: 100%;
@@ -35,7 +34,6 @@ This file contains all style attributes for the visualisation of the worldmap.
 .datamaps-legend dl {
 	margin-left: 40px;
 }
-
 
 
 /* SLIDER */

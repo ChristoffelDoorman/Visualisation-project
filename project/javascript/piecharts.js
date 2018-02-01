@@ -44,13 +44,13 @@ function drawPiechart(data, year, country, migrationType) {
             .append('g')
             .attr('transform', 'translate(' + 250 + ',' + 250 + ')')
 
-        piechart.append("text")
+        piechart.append('text')
             .attr('class', 'pieTitle')
             .attr('id', 'immigrationTitle')
-            .attr("y", -height/1.8)
-            .attr("text-anchor", "middle")
-            .style("font-size", "20px")
-            .text("Countries of origin")
+            .attr('y', -height/1.8)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '20px')
+            .text('Countries of origin')
     }
 
     if (migrationType == 'emigration') {
@@ -65,19 +65,19 @@ function drawPiechart(data, year, country, migrationType) {
             .append('g')
             .attr('transform', 'translate(' + 250  + ',' + 250 + ')')
 
-        piechart.append("text")
+        piechart.append('text')
             .attr('class', 'pieTitle')
             .attr('id', 'immigrationTitle')
-            .attr("y", -height/1.8)
-            .attr("text-anchor", "middle")
-            .style("font-size", "20px")
-            .text("Countries of destination")
+            .attr('y', -height/1.8)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '20px')
+            .text('Countries of destination')
     }
 
     // display total immigration or emigration inside piechart
     piechart.append('text')
-        .attr("text-anchor", "middle")
-        .text("Total: " + parseNumber(totalMigration));
+        .attr('text-anchor', 'middle')
+        .text('Total: ' + parseNumber(totalMigration));
 
     // add the arcs of the pie
     var arc = d3.svg.arc()
@@ -90,11 +90,11 @@ function drawPiechart(data, year, country, migrationType) {
 			.value(function(d){ return d.value; });
 
     // enter data and show tooltip when mouseover
-    var g = piechart.selectAll(".fan")
+    var g = piechart.selectAll('.fan')
         .data(pie(data))
         .enter()
-        .append("g")
-        .attr("class", "fan")
+        .append('g')
+        .attr('class', 'fan')
         .on('mouseover', function(d) {
 
             // show tooltip when mouseover
@@ -144,15 +144,15 @@ function drawPiechart(data, year, country, migrationType) {
 
     // set color range
     var color = d3.scale.ordinal()
-        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#346084"]);
+        .range(['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56', '#d0743c', '#ff8c00', '#346084']);
 
-    g.append("path")
-    	.attr("d", arc)
-    	.attr("fill", function(d){ return color(d.data.country); })
+    g.append('path')
+    	.attr('d', arc)
+    	.attr('fill', function(d){ return color(d.data.country); })
 
-    g.append("text")
-        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-        .style("text-anchor", "middle")
+    g.append('text')
+        .attr('transform', function(d) { return 'translate(' + arc.centroid(d) + ')'; })
+        .style('text-anchor', 'middle')
         .text(function(d) { return d.data.country; });
 }
 

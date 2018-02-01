@@ -55,7 +55,7 @@ window.onload = function(){
         drawPiechart(migrationData, pieYear, currCountry, 'immigration');
 
         // redraw map to chosen year
-        slider = document.getElementById("slider-years");
+        slider = document.getElementById('slider-years');
         slider.oninput = function() {
 
             // delete map and legend

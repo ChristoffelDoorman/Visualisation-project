@@ -1,3 +1,13 @@
+# migration_csv2json.py
+#
+# Programmeerproject
+# Minor Programmeren (UvA)
+# Author: Christoffel Doorman
+# Student number: 10580557
+#
+# This file converts two csv file into a single json file in a usable format.
+# ------------------------------------------------------------------------------
+
 import csv, json
 from country_codes import *
 
@@ -55,7 +65,7 @@ def read_row(year, data, total_emigrations):
             # Append dictionary of other countries
             data[year][country_code]["immigration"].append({"country": "Others", "value": total_other_immigration, "info": immigration_others})
 
-
+# Function inserts the emigration dictionary into the json dictionary
 def insert_emigration(year):
         value = emigration_dict[year][headers[i]]["total"]
         info = emigration_dict[year][headers[i]]["list"]
@@ -105,6 +115,6 @@ with open("../raw_data/migration_cleandata.csv") as infile:
 
 
 # Store in outfile and close outfile
-outfile = open('../project/data/migrationData.json', 'w')
+outfile = open("../project/data/migrationData.json", "w")
 json.dump(data, outfile, ensure_ascii=False, indent=4)
 outfile.close()

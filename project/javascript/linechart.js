@@ -20,7 +20,7 @@ initiates paths, title and the legend.
 function drawLinechart() {
 
     // set height and width
-    lineData['width'] = width = 460;
+    lineData['width'] = width = 500;
     lineData['height'] = height = 400;
 
     // add scales
@@ -88,7 +88,7 @@ function drawLinechart() {
         .attr('id', 'xaxis')
         .attr('transform', 'translate(0,' + height / 1.3 + ')')
         .append('text')
-        .attr('transform', 'translate(' + ((width / 2) - 30) + ', 35)')
+        .attr('transform', 'translate(' + ((width / 2) - 40) + ', 35)')
         .style('font-size', '15px')
         .text('Year');
 
@@ -132,8 +132,8 @@ function updateLinechart(data, country) {
         lineData.happinessline.attr('data-legend', function(d) { return 'Happiness (No data)'; })
         linechart.append('text')
             .attr('class', 'no-data')
-            .attr('dx', (width / 2))
-            .attr('dy', (height / 2))
+            .attr('dx', (width / 2 - 20))
+            .attr('dy', (height / 2 - 20))
             .attr('text-anchor', 'middle')
             .text('Sorry, no data');
 
@@ -142,10 +142,10 @@ function updateLinechart(data, country) {
         lineData.gdpline.attr('data-legend', function(d) { return 'GDP (No data)'; })
         lineData.happinessline.attr('data-legend', function(d) { return 'Happiness'; })
     } else if (!checker[0]) {
-        lineData.gdpline.attr('data-legend', function(d) { return 'GDP'; })
+        lineData.gdpline.attr('data-legend', function(d) { return 'GDP (Intl$)'; })
         lineData.happinessline.attr('data-legend', function(d) { return 'Happiness (No data)'; })
     } else {
-        lineData.gdpline.attr('data-legend', function(d) { return 'GDP'; })
+        lineData.gdpline.attr('data-legend', function(d) { return 'GDP (Intl$)'; })
         lineData.happinessline.attr('data-legend', function(d) { return 'Happiness'; })
     }
 

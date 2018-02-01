@@ -53,7 +53,7 @@ elements to structure the overall outly of the html page.
         <!-- Headers -->
         <div class='row'>
             <div class='jumbotron'>
-                <div class='container text-center'>
+                <div class='container text-center' id='headercontainer'>
                     <h1>Do we follow the money or happiness?</h1>
                     <p>Since the ages of the hunting and gathering, people are constantly
                         moving their living places all over the world. In the modern
@@ -71,7 +71,7 @@ elements to structure the overall outly of the html page.
         </div>
 
         <!-- Container containing all visualisations -->
-        <div class='container'>
+        <div class='container' id='maincontainer'>
             <div class='row'>
                 <div class='col-md-7'>
 
@@ -100,28 +100,35 @@ elements to structure the overall outly of the html page.
 
             </div>
 
-
+            <!-- Header piecharts -->
             <div class='row'>
-
-                <!-- Immigration piechart -->
-                <div class='col-md-5'>
-                    <div id='container3'></div>
+                <div class='col-md-6 col-md-offset-4'>
+                    <text id='selected-country'></text>
                 </div>
+            </div>
 
-                <!-- Buttons piechart (2010 and 2015) -->
-                <div class='col-md-2'>
+            <!-- Buttons piechart (2010 and 2015) -->
+            <div class='row'>
+                <div class='col-md-2 col-md-offset-5'>
                     <div class='btn-group'>
                         <button type='button' value='0' class='btn btn-default pie' id='pie0'>2010</button>
                         <button type='button' value='1' class='btn btn-default pie start' id='pie1'>2015</button>
                     </div>
                 </div>
+            </div>
+
+            <!-- Piecharts -->
+            <div class='row'>
+                <!-- Immigration piechart -->
+                <div class='col-md-6'>
+                    <div id='container3'></div>
+                </div>
 
                 <!-- Emigration piechart -->
-                <div class='col-md-5'>
+                <div class='col-md-6'>
                     <div id='container4'></div>
                 </div>
             </div>
-
         </div>
 
         <!-- Footer -->
@@ -133,7 +140,7 @@ elements to structure the overall outly of the html page.
                         <a href='http://wid.world/data/'>World Wealth & Income Database</a><br>
                         Happiness data-souce:
                         <a href='https://ourworldindata.org/happiness-and-life-satisfaction'>Happiness and Life Satisfaction</a><br>
-                        Happiness data-souce:
+                        Migration data-souce:
                         <a href='http://www.un.org/en/development/desa/population/migration/data/estimates2/estimates17.shtml'>United Nations Population Division</a>
                     </p>
 

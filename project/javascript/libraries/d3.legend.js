@@ -44,7 +44,7 @@
 				.call(function(d) { d.enter().append('text'); })
 				.call(function(d) { d.exit().remove(); })
 				.attr('y', '0em')
-				.attr('x', function(d, i) { return (i * 30) + 1 + 'em' })
+				.attr('x', function(d, i) { return (i * 28) + 1 + 'em' })
 				.text(function(d) { return d.key; });
 
 			li.selectAll('circle')
@@ -52,7 +52,7 @@
 				.call(function(d) { d.enter().append('circle'); })
 				.call(function(d) { d.exit().remove(); })
 				.attr('cy', '-0.25em')
-				.attr('cx', function(d, i) { return (i * 30) + 'em'; })
+				.attr('cx', function(d, i) { return (i * 28) + 'em'; })
 				.attr('r', 4)
 				.style('stroke', function(d) { return d.value.color })
 				.style('fill', 'white')
