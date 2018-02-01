@@ -8,16 +8,30 @@ The data visualtization excists of four views: a woldmap, a linechart with a hor
 
 ![Project sketch](/doc/project_sketch.png)
 
-## Data Sources
+
+## Sources
+
+### Data Sources
 * [GDP per adult](http://wid.world/data/)
 * [Happiness- and life-satisfaction](https://ourworldindata.org/happiness-and-life-satisfaction/)
 * [International migration stock](http://www.un.org/en/development/desa/population/migration/data/estimates2/estimates17.shtml)
 
-## Code Sources
+### Code Sources
 * [Country codes](https://data.mprog.nl/course/30%20Homework/140%20D3%20Map/countries.js) - Author: Robin Kuiper (2014)
+* [Datamaps](http://datamaps.github.io/)
 * [Worldmap](http://bl.ocks.org/tomschulze/961d57bd1bbd2a9ef993f2e8645cb8d2)
+* [Piecharts](https://bl.ocks.org/mbostock/3887235)
+* [Slider tooltip](https://css-tricks.com/value-bubbles-for-range-inputs/)
 
-## Libraries
+### Libraries
 * d3.min.js - Copyright (c) 2010-2016, Michael Bostock
+* bootstrap.min.js - Copyright 2011-2017, The Bootstrap Authors
+* jQuery v3.2.1 - Copyright (c) JS Foundation
+* d3.legend.js - Copyright (c) 2012, ziggy.jonsson.nyc@gmail.com
+* topojson.js - Copyright (c) 2012-2016, Michael Bostock All rights reserved
+
+### CSS files
+* bootstrap.min.css - Copyright 2011-2016, Twitter, Inc.
+
 
 *Copyright (c) 2018, Christoffel Doorman*
