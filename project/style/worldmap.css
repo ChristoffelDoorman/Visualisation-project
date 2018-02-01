@@ -68,25 +68,21 @@ This file contains all style attributes for the visualisation of the worldmap.
     opacity: 1;
 }
 
-#slider.well {
-	width: 40%;
-}
-
 
 /* SLIDER TOOLTIP */
 output {
     position: absolute;
-    background-image: linear-gradient(top, #444444, #999999);
-    width: 40px;
-    height: 30px;
+    background-color: #6693b7;
+    width: 45px;
+    height: 25px;
     text-align: center;
-    color: black;
-    border-radius: 10px;
+    color: white;
+    border-radius: 2px;
     display: inline-block;
-    font: bold 15px/30px Georgia;
-    bottom: 175%;
-    left: 0;
-    margin-left: -1%;
+    font: 15px Sans-serif;
+    bottom: 40px;
+    left: 50px;
+    margin-left: 50px;
 }
 
 output:after {

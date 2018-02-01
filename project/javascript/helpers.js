@@ -6,7 +6,7 @@ Minor Programmeren (UvA)
 Author: Christoffel Doorman
 Student number: 10580557
 
-File contains all function used in one or multiple javascript files.
+File contains all functions used in one or multiple javascript files.
 */
 
 /*
