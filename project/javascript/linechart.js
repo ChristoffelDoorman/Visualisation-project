@@ -1,7 +1,21 @@
+/*
+linechart.js
+
+Programmeerproject
+Minor Programmeren (UvA)
+Author: Christoffel Doorman
+Student number: 10580557
+
+File contains functions to draw and update the linechart visualisation.
+*/
+
 // save all global linechart variable in object
 var lineData = {};
 var linechart;
 
+/*
+This function adds all elements to draw the line chart
+*/
 function drawLinechart() {
 
     lineData['width'] = width = 460;
@@ -87,7 +101,11 @@ function drawLinechart() {
         .attr("transform", "translate(-10, 50)");
 }
 
-
+/*
+This function appends and updates the data of the linechart
+data: the data dispayed in the linecharts
+country: the selected country
+*/
 function updateLinechart(data, country) {
 
     var formatTime = d3.time.format("%Y");
@@ -228,6 +246,12 @@ function checkData(data) {
 
 }
 
+/*
+This function converts the data into a specific form in a list that is
+usable for the update function.
+data: data that has to be converted
+country: selected country
+*/
 function prepareLineData(data, country) {
 
     // parse year to date format

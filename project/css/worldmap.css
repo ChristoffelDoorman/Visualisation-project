@@ -1,0 +1,104 @@
+/*
+worldmap.css
+
+Programmeerproject
+Minor Programmeren (UvA)
+Author: Christoffel Doorman
+Student number: 10580557
+
+This file contains all style attributes for the visualisation of the worldmap.
+*/
+
+/* WORLDMAP */
+#container1 {
+	/* border: 2px solid #73AD21; */
+	height: 400px;
+	position: relative;
+	width: 100%;
+}
+
+
+/* LEGEND */
+.datamaps-legend {
+	position: fixed;
+  	top: -8px;
+  	margin-left: 10%;
+  	bottom: 565px;
+  	width: 80%;
+}
+
+.datamaps-legend h2 {
+	text-align: center;
+	font-size: 20px;
+}
+
+.datamaps-legend dl {
+	margin-left: 40px;
+}
+
+
+
+/* SLIDER */
+#slider-well {
+	bottom: 30px;
+	left: 200px;
+	margin: auto;
+	position: absolute;
+	width: 70%;
+
+}
+
+.slidecontainer {
+	position: absolute;
+	bottom: 20px;
+	left: 20%;
+	right: 20%;
+	width: 60%;
+}
+
+#slider-years {
+	position: absolute;
+	bottom: 20px;
+	left: 20%;
+	right: 20%;
+	width: 60%;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+#slider.well {
+	width: 40%;
+}
+
+
+/* SLIDER TOOLTIP */
+output {
+    position: absolute;
+    background-image: linear-gradient(top, #444444, #999999);
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    color: black;
+    border-radius: 10px;
+    display: inline-block;
+    font: bold 15px/30px Georgia;
+    bottom: 175%;
+    left: 0;
+    margin-left: -1%;
+}
+
+output:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #999999;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    margin-top: -1px;
+}

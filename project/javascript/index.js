@@ -6,7 +6,8 @@ Minor Programmeren (UvA)
 Author: Christoffel Doorman
 Student number: 10580557
 
-This file
+In this file, all functions are called to draw, remove and update all
+visualisations on users actions.
 */
 
 var currYear = '2014';

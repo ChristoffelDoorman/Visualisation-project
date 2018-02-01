@@ -1,0 +1,57 @@
+/*
+linechart.css
+
+Programmeerproject
+Minor Programmeren (UvA)
+Author: Christoffel Doorman
+Student number: 10580557
+
+This file contains all style attributes for the linechart visualisation.
+*/
+
+/* LINECHART */
+#container2 {
+	height: 400px;
+	position: relative;
+	width: 100%;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+.axis text {
+	font-size: 10px;
+}
+
+.gdp {
+	stroke: steelblue;
+	stroke-width: 2px;
+}
+
+.happiness {
+  	stroke: #FF0000;
+	stroke-width: 2px;
+}
+
+.line {
+	fill: none;
+}
+
+.dot {
+	fill: white;
+}
+
+/* LEGEND */
+.line-legend {
+	font-size: 12px;
+}
+
+.legend-box {
+  fill: white;
+  stroke: none;
+  opacity:0.8;
+}

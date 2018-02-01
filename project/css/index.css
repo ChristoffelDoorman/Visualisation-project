@@ -1,3 +1,14 @@
+/*
+index.css
+
+Programmeerproject
+Minor Programmeren (UvA)
+Author: Christoffel Doorman
+Student number: 10580557
+
+File contains all style attributes that apply for multiple visualisations and
+for the general layout.
+*/
 
 /*HEADER*/
 .jumbotron {
@@ -17,6 +28,12 @@
 	font-size: 15px;
 }
 
+/*FOOTER*/
+footer {
+  	background-color: #f2f2f2;
+  	padding: 25px;
+}
+
 
 /*TOOLTIP*/
 .tooltip {
@@ -33,142 +50,8 @@
 	pointer-events: none;
 }
 
-/* WORLDMAP */
-#container1 {
-	/* border: 2px solid #73AD21; */
-	height: 400px;
-	position: relative;
-	width: 100%;
-}
-
-.datamaps-legend {
-	position: fixed;
-  	top: -8px;
-  	margin-left: 10%;
-  	bottom: 565px;
-  	width: 80%;
-}
-
-.datamaps-legend h2 {
-	text-align: center;
-	font-size: 20px;
-}
-
-.datamaps-legend dl {
-	margin-left: 40px;
-}
-
-
-
-/* SLIDER */
-#slider-well {
-	bottom: 30px;
-	left: 200px;
-	margin: auto;
-	position: absolute;
-	width: 70%;
-
-}
-
-.slidecontainer {
-	position: absolute;
-	bottom: 20px;
-	left: 20%;
-	right: 20%;
-	width: 60%;
-}
-
-#slider-years {
-	position: absolute;
-	bottom: 20px;
-	left: 20%;
-	right: 20%;
-	width: 60%;
-}
-
-.slider:hover {
-    opacity: 1;
-}
-
-#slider.well {
-	width: 40%;
-}
-
-/* LINECHART */
-#container2 {
-	height: 400px;
-	position: relative;
-	width: 100%;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: grey;
-    stroke-width: 1;
-    shape-rendering: crispEdges;
-}
-.axis text {
-	font-size: 10px;
-}
-
-.gdp {
-	stroke: steelblue;
-	stroke-width: 2px;
-}
-
-.happiness {
-  	stroke: #FF0000;
-	stroke-width: 2px;
-}
-
-.line {
-	fill: none;
-}
-
-.dot {
-	fill: white;
-}
-
-.line-legend {
-	font-size: 12px;
-}
-
-.legend-box {
-  fill: white;
-  stroke: none;
-  opacity:0.8;
-}
 
 /* NO DATA MESSAGE */
 #no-data {
 	font-size: 20px;
-}
-
-
-
-/* PIECHARTS */
-#container3 {
-	height: 500px;
-	width: 100%;
-}
-
-#container4 {
-	width:100%;
-}
-
-.piechart {
-	font: "Times New Roman", Times, serif;
-	font-size: 16px;
-	top: 100px;
-}
-
-.pieTitle {
-	fill: black;
-}
-
-/*FOOTER*/
-footer {
-  	background-color: #f2f2f2;
-  	padding: 25px;
 }

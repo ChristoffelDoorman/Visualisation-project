@@ -1,13 +1,12 @@
 /*
-index.js
+worldmap.js
 
 Programmeerproject
 Minor Programmeren (UvA)
 Author: Christoffel Doorman
 Student number: 10580557
 
-This file contains two functions: a function that builds and updates the
-worldmap, and a function that builds the legend.
+This file contains the functions to draw and update the worldmap visualisations.
 */
 
 
@@ -16,57 +15,10 @@ function drawWorldmap(mapData, migrationData, year, category){
     // select chosen year and category
     var data = mapData[year][category];
 
-    // create dictionary usable for datamaps
-    var dataset = {};
+    // convert data into usable structure
+    var dataset = prepareMapData(data, category);
 
-    // fill dataset in appropriate format
-    Object.keys(data).forEach(function(item) {
-
-        var value = data[item]
-
-        if (category == 'gdp') {
-
-            if (value == "unknown") {
-                fillColor = "default-fill";
-            } else if (value < 5000) {
-                fillColor = "A";
-            } else if (value < 10000) {
-                fillColor = "B";
-            } else if (value < 15000) {
-                fillColor = "C";
-            } else if (value < 30000) {
-                fillColor = "D";
-            } else if (value < 50000) {
-                fillColor = "E";
-            } else if (value >= 50000) {
-                fillColor = "F";
-            }
-        }
-
-        if (category == 'happiness') {
-
-            if (value == "unknown") {
-                fillColor = "default-fill";
-            } else if (value < 4) {
-                fillColor = "A";
-            } else if (value < 5) {
-                fillColor = "B";
-            } else if (value < 6) {
-                fillColor = "C";
-            } else if (value < 7) {
-                fillColor = "D";
-            } else if (value < 8) {
-                fillColor = "E";
-            } else if (value >= 8) {
-                fillColor = "F";
-            }
-        }
-
-        dataset[item] = {category: value, fillKey: fillColor};
-
-    });
-
-
+    // create datamap
     map = new Datamap({
         element: document.getElementById('container1'),
 
@@ -151,6 +103,7 @@ function drawWorldmap(mapData, migrationData, year, category){
 
     });
 
+    // draw legend
     drawLegend(category);
 }
 
@@ -190,3 +143,96 @@ function drawLegend(category) {
         });
     }
 }
+
+
+function prepareMapData(data, category) {
+
+    // create dictionary usable for datamaps
+    var dataset = {};
+
+    // fill dataset in appropriate format
+    Object.keys(data).forEach(function(item) {
+
+        var value = data[item]
+
+        if (category == 'gdp') {
+
+            if (value == "unknown") {
+                fillColor = "default-fill";
+            } else if (value < 5000) {
+                fillColor = "A";
+            } else if (value < 10000) {
+                fillColor = "B";
+            } else if (value < 15000) {
+                fillColor = "C";
+            } else if (value < 30000) {
+                fillColor = "D";
+            } else if (value < 50000) {
+                fillColor = "E";
+            } else if (value >= 50000) {
+                fillColor = "F";
+            }
+        }
+
+        if (category == 'happiness') {
+
+            if (value == "unknown") {
+                fillColor = "default-fill";
+            } else if (value < 4) {
+                fillColor = "A";
+            } else if (value < 5) {
+                fillColor = "B";
+            } else if (value < 6) {
+                fillColor = "C";
+            } else if (value < 7) {
+                fillColor = "D";
+            } else if (value < 8) {
+                fillColor = "E";
+            } else if (value >= 8) {
+                fillColor = "F";
+            }
+        }
+
+        dataset[item] = {category: value, fillKey: fillColor};
+
+    });
+
+    return dataset;
+}
+
+// DOM Ready
+$(function() {
+ var el, newPoint, newPlace, offset;
+
+ // Select all range inputs, watch for change
+ $("input[type='range']").change(function() {
+
+   // Cache this for efficiency
+   el = $(this);
+
+   // Measure width of range input
+   width = el.width();
+
+   // Figure out placement percentage between left and right of input
+   newPoint = (el.val() - el.attr("min")) / (el.attr("max") - el.attr("min"));
+
+   // Janky value to get pointer to line up better
+   offset = -1.3;
+
+   // Prevent bubble from going beyond left or right (unsupported browsers)
+   if (newPoint < 0) { newPlace = 0; }
+   else if (newPoint > 1) { newPlace = width; }
+   else { newPlace = width * newPoint + offset; offset -= newPoint; }
+
+   // Move bubble
+   el
+     .next("output")
+     .css({
+       left: newPlace,
+       marginLeft: offset + "%"
+     })
+     .text(el.val());
+ })
+ // Fake a change to position bubble at page load
+ .trigger('change');
+});

@@ -1,11 +1,12 @@
 /*
 index.js
+
 Programmeerproject
 Minor Programmeren (UvA)
 Author: Christoffel Doorman
 Student number: 10580557
-This file contains two functions: a function that builds and updates the
-worldmap, and a function that builds the legend.
+
+File contains functions to draw and update the piechart visualisations.
 */
 
 // var width = 960;

@@ -1,0 +1,31 @@
+/*
+piecharts.css
+
+Programmeerproject
+Minor Programmeren (UvA)
+Author: Christoffel Doorman
+Student number: 10580557
+
+This file contains all style attributes for the piecharts visualisations.
+*/
+
+
+/* PIECHARTS */
+#container3 {
+	height: 500px;
+	width: 100%;
+}
+
+#container4 {
+	width:100%;
+}
+
+.piechart {
+	font: "Times New Roman", Times, serif;
+	font-size: 16px;
+	top: 100px;
+}
+
+.pieTitle {
+	fill: black;
+}

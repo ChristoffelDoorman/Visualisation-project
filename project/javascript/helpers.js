@@ -1,17 +1,42 @@
+/*
+helpers.js
 
+Programmeerproject
+Minor Programmeren (UvA)
+Author: Christoffel Doorman
+Student number: 10580557
 
+File contains all function used in one or multiple javascript files.
+*/
+
+/*
+This function converts a number into an international valuta format.
+value: number to be converted
+*/
 function parseMoney(value) {
     return d3.format(",.0f")(value) + ' Intl$';
 }
 
+/*
+This function rounds a number to one decimal.
+value: number to be rounded
+*/
 function parseRate(value) {
     return d3.format('.1f')(value);
 }
 
+/*
+This function places a comma for every thousant
+value: number to be converted
+*/
 function parseNumber(value) {
     return d3.format(',')(value);
 }
 
+/*
+This function returns the full name of a country codes
+country: three-letter country code
+*/
 function findCountryName(country) {
     for (i = 0; i < countryCodes.length; i++) {
         if (countryCodes[i][1] == country) {
@@ -22,13 +47,12 @@ function findCountryName(country) {
     return country;
 }
 
-
+/*
+This function adds a tooltip to the geograph
+container: the selected container
+type: map, pie or line
+*/
 function addTooltip(container, type) {
-    /*
-    This function adds a tooltip to the graph.
-    container: the selected container
-    type: map, piechart or linechart
-    */
 
     var tooltip = d3.select(container).append('div')
         .attr('class', 'tooltip')
@@ -39,19 +63,31 @@ function addTooltip(container, type) {
 
 }
 
-
+/*
+This function displays the tooltip when mouseover
+tooltip: the hidden tooltip
+*/
 function mouseover(tooltip) {
     tooltip.transition()
         .duration(200)
         .style("display", "inline");
 }
 
+/*
+This function lets tooltip follow the mouse when mouseover
+mouse: mouse location ([x, y])
+tooltip: the added tooltip
+*/
 function mousemove(mouse, tooltip) {
     tooltip.style("left", (mouse[0]) + "px")
         .style("top", (mouse[1]) + "px");
 
 }
 
+/*
+This function hides the tooltip when mouseout
+tooltip: the added tooltip
+*/
 function mouseout(tooltip) {
     tooltip.transition()
         .duration(100)
@@ -87,6 +123,10 @@ function buttonColor(element) {
     prevClass = currClass.split(' ')[2];
 }
 
+/*
+This function displays info of no data when data is unkown
+tooltip: the selected container
+*/
 function displayNoData(container) {
     d3.select('#' + container)
         .append('svg')
