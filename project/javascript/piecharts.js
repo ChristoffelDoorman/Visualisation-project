@@ -1,5 +1,5 @@
 /*
-index.js
+piecharts.js
 
 Programmeerproject
 Minor Programmeren (UvA)
