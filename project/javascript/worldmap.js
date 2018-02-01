@@ -51,13 +51,6 @@ function drawWorldmap(mapData, migrationData, year, category){
                     // get country code of clicked country
                     currCountry = geography.id;
 
-                    var selectedCountry = findCountryName(currCountry);
-
-                    d3.select('#selected-country')
-                        .style('font-size', '25px')
-                        .style('font-weight', 'bold')
-                        .text("Migration of: " + selectedCountry);
-
                     // if no data, alert user and draw previous piechart
                     if (migrationData[pieYear][currCountry] == undefined) {
                         d3.selectAll('.piechart').remove();

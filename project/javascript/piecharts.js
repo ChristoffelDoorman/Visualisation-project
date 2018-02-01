@@ -74,6 +74,12 @@ function drawPiechart(data, year, country, migrationType) {
             .text('Countries of destination')
     }
 
+    var countryName = findCountryName(country);
+
+    // display selected country as text
+    d3.select('#selected-country')
+        .text("Migration of: " + countryName);
+
     // display total immigration or emigration inside piechart
     piechart.append('text')
         .attr('text-anchor', 'middle')
@@ -130,10 +136,9 @@ function drawPiechart(data, year, country, migrationType) {
         // let tooltip chase mouse
         .on('mousemove', function() {
             var mouse = d3.mouse(this);
-            mouse[0] += 230;
-            mouse[1] += 150;
+            mouse[0] += 280;
+            mouse[1] += 200;
             mousemove(mouse, pieData.tooltipImm);
-            mouse[0] += 120;
             mousemove(mouse, pieData.tooltipEmi);
         })
         // hide tooltip when mouseout

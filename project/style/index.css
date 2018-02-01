@@ -38,6 +38,11 @@ for the general layout.
     margin-right: 30px;
 }
 
+#selected-country {
+    font-size: 25px;
+    font-weight: bold;
+}
+
 
 /*FOOTER*/
 footer {
