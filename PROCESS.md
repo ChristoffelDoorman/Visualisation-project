@@ -67,7 +67,7 @@ Today I made all visualizations interactive. Solved the problem where the piecha
 
 ### Day 14 - Thu Januari 25
 
-Today I was feeling sick and could not do so much. Noted that I had to search for other color palettes for the worldmap, as the colors did almost not change in the years. Below, a worldmap of 2010 vs. worldmap of 2014 are shown. There is almost no difference.
+Today I was feeling sick and could not do so much. Noted that I had to search for other color palettes for the worldmap, as the colors did almost not change in the years. Below, a worldmap of 2010 vs. worldmap of 2014 are shown. There is almost no difference. Fixed it by making a couple of color intervals, instead of continues range.
 
 ![Project sketch](/doc/map2010.png) + ![Project sketch](/doc/map2014.png)
 
