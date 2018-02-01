@@ -13,9 +13,9 @@ are. Did those migrants seek for money or happiness?
 
 This projects contains three different interactive visualisations: a worldmap, a multiple-line chart with two different y-axi, and two pie charts. The visualisations provide two different interactive components: toggle buttons and a slider.
 
-![/doc/final-snap1.png]
-![/doc/final-snap2.png]
-![/doc/final-snap3.png]
+!(/doc/final-snap1.png)
+!(/doc/final-snap2.png)
+!(/doc/final-snap3.png)
 
 #### Visualisation 1 (Worldmap)
 The worldmap shows the GPD or happiness-grade per country. If you hover over a specific country, the information will be displayed in a pop-up (country, GDP, happiness-grade and possibly population). A toggle button lets the user choose between GPD and happiness: this choise will color the map in GPD- or happiness-rates. A slider lets the user change the year, from 2008 up till 2016. When the users clicks on a specific country, the line chart and pie charts change to the selected country.
