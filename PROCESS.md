@@ -119,6 +119,11 @@ happiness.selectAll("circle")
 
 ### Day 18 - Wed Januari 31
 
+The whole lay-out was terrible. Fixed it by adding all width, heights, and other lengths in containers. Added rows for piechart buttons
+and header.
+
 
 ### Day 19 - Thu Februari 1
+
+Checked and commented all files, added headers. Typed the final report. Checked for bugs.
 
