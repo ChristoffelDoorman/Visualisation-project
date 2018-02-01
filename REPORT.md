@@ -67,11 +67,16 @@ This file contains all function used in one or multiple javascript files. Exampl
 
 ## Challenges during process
 I encountered multiple challenges during the process:
-* Finding a good color scale for the gdp and happiness worldmaps: This was hard, because due to extrema's in the data (a few countries with an extremly low gdp and a few countries with an extremely high gdp, for example), all 'average' countries would look the same with a continious scale. This was fixed by scaling the color in different intervals.
+* Finding a good color scale for the gdp and happiness worldmaps: This was hard, because due to extrema's in the data (a few countries with an extremly low gdp and a few countries with an extremely high gdp, for example), all 'average' countries would look the same with a continious scale, and changing time was hard to see a change (see images). This was fixed by scaling the color in different intervals.
 * During the process, I had to change the structure of the json files a lot of times in order to acomplish some decisions. This took some time, but were very hard needed.
+![](/doc/map2010.png) + ![](/doc/map2014.png)
+
 * I found it pretty hard to provide a good layout. All the time, div's, svg's, g's, etc. were overlapping each other, hiding other visualizations, falling off the page, etc. This took a lot of time. Next time, it will be smart to make a strict and well-organised planning for the page layout.
 
 
 ## Decisions
 After twe weeks, I decided to switch the locations of the visualisations. Instead of the linechart bottom-left, with the two piecharts
-right of it, I decided to place the linechart at the right-top location. I left the piecharts at the bottom. This was a bit more symmetrical and gave the visualizations some more space. For the rest, I sticked to the initial plans.
+right of it (see project proposalsketch beneath), I decided to place the linechart at the right-top location. I left the piecharts at the bottom. This was a bit more symmetrical and gave the visualizations some more space. For the rest, I sticked to the initial plans.
+
+
+![](/doc/project_sketch.png)
