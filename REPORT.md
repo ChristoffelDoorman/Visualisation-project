@@ -11,11 +11,16 @@ are. Did those migrants seek for money or happiness?
 
 ## Description application
 
-This projects contains three different interactive visualisations: a worldmap, a multiple-line chart with two different y-axi, and two pie charts. The visualisations provide two different interactive components: toggle buttons and a slider.
+The data visualtization excists of four views: a woldmap, a linechart with a horizontal time axis and two y-axi: a GDP and a happiness axis. The worldmap has a buttontool, which let the user choose to display happiness or GDP values on the map. Furthermore, the user can slide a slider to choose the year, between 2008 and 2016. If the user clicks on a country in the worldmap, the linecharts change to the selected country, and two pie charts appear of the selected country. One pie chart displayes the immigration with countries of origin. The other pie chart displayes the emigration, with countries of destiny. Which year the pie charts show, can be chosen by the user with a drop-down menu (options: 2010 and 2015). See the [design document](/DESIGN.md) for more information.
 
 ![](/doc/final-snap1.png)
 ![](/doc/final-snap2.png)
 ![](/doc/final-snap3.png)
+
+
+## Technical design
+
+This projects contains three different interactive visualisations: a worldmap, a multiple-line chart with two different y-axi, and two pie charts. The visualisations provide two different interactive components: toggle buttons and a slider.
 
 #### Visualisation 1 (Worldmap)
 The worldmap shows the GPD or happiness-grade per country. If you hover over a specific country, the information will be displayed in a pop-up (country, GDP, happiness-grade and possibly population). A toggle button lets the user choose between GPD and happiness: this choise will color the map in GPD- or happiness-rates. A slider lets the user change the year, from 2008 up till 2016. When the users clicks on a specific country, the line chart and pie charts change to the selected country.
@@ -31,10 +36,6 @@ Both the worldmap as the pie charts use toggle buttons. The worldmap lets the us
 
 #### Interactive component 2 (Slider)
 Beside the toggle button, the worldmap contains a slider which lets the user choose the year (2008-2016). In order to implement this interactive component, ...
-
-
-
-## Technical design
 
 
 ## Challenges during process
