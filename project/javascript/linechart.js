@@ -24,27 +24,27 @@ function drawLinechart() {
     lineData['height'] = height = 400;
 
     // add scales
-    lineData["x"] = x = d3.time.scale().range([0, width / 1.15 ]);
-    lineData["y0"] = y0 = d3.scale.linear().range([height / 1.3, 70]);
-    lineData["y1"] = y1 = d3.scale.linear().range([height / 1.3, 70]);
+    lineData['x'] = x = d3.time.scale().range([0, width / 1.15 ]);
+    lineData['y0'] = y0 = d3.scale.linear().range([height / 1.3, 70]);
+    lineData['y1'] = y1 = d3.scale.linear().range([height / 1.3, 70]);
 
     // scale all axis
-    lineData["xAxis"] = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(d3.timeYear);
+    lineData['xAxis'] = d3.svg.axis().scale(x)
+        .orient('bottom').ticks(d3.timeYear);
 
-    lineData["y0Axis"] = d3.svg.axis().scale(y0)
-        .orient("left").ticks(5);
+    lineData['y0Axis'] = d3.svg.axis().scale(y0)
+        .orient('left').ticks(5);
 
-    lineData["y1Axis"] = d3.svg.axis().scale(y1)
-        .orient("right").ticks(5);
+    lineData['y1Axis'] = d3.svg.axis().scale(y1)
+        .orient('right').ticks(5);
 
     // add lines
-    lineData["gdpLine"] = d3.svg.line()
+    lineData['gdpLine'] = d3.svg.line()
         .defined(function(d) { return d.gdp })
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y0(d.gdp); });
 
-    lineData["happinessLine"] = d3.svg.line()
+    lineData['happinessLine'] = d3.svg.line()
         .defined(function(d) { return d.happiness })
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y1(d.happiness); })
@@ -59,48 +59,52 @@ function drawLinechart() {
         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
     // add tooltip
-    lineData["tooltip"] = addTooltip('#container2', 'line');
+    lineData['tooltip'] = addTooltip('#container2', 'line');
 
     // append title
-    linechart.append("text")
+    linechart.append('text')
         .attr('id', 'linechartTitle')
-        .attr("x", (width / 2.3))
-        .attr("y", 15)
-        .attr("text-anchor", "middle")
-        .style("font-size", "20px")
+        .attr('x', (width / 2.3))
+        .attr('y', 15)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '20px')
 
     // append line paths
-    linechart.append('g')
+    lineData['gdpline'] = linechart.append('g')
         .attr('class', 'gdp')
-        .append("path")
-        .attr("class", "line")
-        .attr("data-legend", function(d) { return 'GDP'})
+        .append('path')
+        .attr('class', 'line')
+        // .attr('data-legend', function(d) { return 'GDP'})
 
-    linechart.append('g')
+    lineData['happinessline'] = linechart.append('g')
         .attr('class', 'happiness')
-        .append("path")
-        .attr("class", "line")
-        .attr("data-legend", function(d) { return 'Happiness'});
+        .append('path')
+        .attr('class', 'line')
+        .attr('data-legend', function(d) { return 'Happiness'});
 
     // append all axis
-    linechart.append("g")
+    linechart.append('g')
         .attr('class', 'axis')
         .attr('id', 'xaxis')
-        .attr("transform", "translate(0," + height / 1.3 + ")");
+        .attr('transform', 'translate(0,' + height / 1.3 + ')')
+        .append('text')
+        .attr('transform', 'translate(' + ((width / 2) - 30) + ', 35)')
+        .style('font-size', '15px')
+        .text('Year');
 
-    linechart.append("g")
+    linechart.append('g')
         .attr('class', 'axis')
         .attr('id', 'y0axis');
 
-    linechart.append("g")
+    linechart.append('g')
         .attr('class', 'axis')
         .attr('id', 'y1axis')
-        .attr("transform", "translate(" + width / 1.15 + " ,0)");
+        .attr('transform', 'translate(' + width / 1.15 + ' ,0)');
 
     // add legend
-    linechart.append("g")
-        .attr("class", "line-legend")
-        .attr("transform", "translate(-10, 50)");
+    linechart.append('g')
+        .attr('class', 'line-legend')
+        .attr('transform', 'translate(-10, 50)');
 }
 
 /*
@@ -114,13 +118,35 @@ function updateLinechart(data, country) {
 
     // update linechart title
     d3.select('#linechartTitle')
-        .text("GDP and happiness " + countryName);
+        .text('GDP and happiness ' + countryName);
 
     // structure data in useable format
     var dataset = prepareLineData(data, country);
 
-    if (checkData(dataset)[0] == false) {
-        console.log(dataset)
+    // check if at least one datapoint is known
+    var checker = checkData(dataset);
+
+    // if gdp and happiness unknown, display in middle of svg
+    if (!checker[0] && !checker[1]) {
+        lineData.gdpline.attr('data-legend', function(d) { return 'GDP (No data)'; })
+        lineData.happinessline.attr('data-legend', function(d) { return 'Happiness (No data)'; })
+        linechart.append('text')
+            .attr('class', 'no-data')
+            .attr('dx', (width / 2))
+            .attr('dy', (height / 2))
+            .attr('text-anchor', 'middle')
+            .text('Sorry, no data');
+
+    // if one category completely unknown, display in legenda
+    } else if (!checker[0]) {
+        lineData.gdpline.attr('data-legend', function(d) { return 'GDP (No data)'; })
+        lineData.happinessline.attr('data-legend', function(d) { return 'Happiness'; })
+    } else if (!checker[0]) {
+        lineData.gdpline.attr('data-legend', function(d) { return 'GDP'; })
+        lineData.happinessline.attr('data-legend', function(d) { return 'Happiness (No data)'; })
+    } else {
+        lineData.gdpline.attr('data-legend', function(d) { return 'GDP'; })
+        lineData.happinessline.attr('data-legend', function(d) { return 'Happiness'; })
     }
 
     // scale the range of the data
@@ -146,30 +172,28 @@ function updateLinechart(data, country) {
     gdp.select('.line')
         .transition()
         .duration(750)
-        .attr("d", lineData.gdpLine(dataset));
+        .attr('d', lineData.gdpLine(dataset));
 
     happiness.select('.line')
         .transition()
         .duration(750)
-        .attr("d", lineData.happinessLine(dataset));
+        .attr('d', lineData.happinessLine(dataset));
 
     // update circles on data lines
-    d3.selectAll("circle").remove();
+    d3.selectAll('circle').remove();
 
-    console.log(dataset)
-
-    gdp.selectAll("circle")
+    gdp.selectAll('circle')
         .data(dataset)
         .enter()
-        .append("circle")
-        .style("visibility", "hidden")
+        .append('circle')
+        .style('visibility', 'hidden')
         .transition()
         .delay(500)
-        .attr("class", "dot")
-        .attr("r", 4)
-        .attr("cx", function(d) { return x(d.date); })
-        .attr("cy", function(d) { return y0(d.gdp); })
-        .style("visibility", "initial")
+        .attr('class', 'dot')
+        .attr('r', 4)
+        .attr('cx', function(d) { return x(d.date); })
+        .attr('cy', function(d) { return y0(d.gdp); })
+        .style('visibility', function(d) { return d.gdp !== null ? 'initial' : 'hidden'; })
 
     gdp.selectAll('circle')
         .on('mouseover', function(d) {
@@ -183,68 +207,44 @@ function updateLinechart(data, country) {
             var mouse = d3.mouse(this);
             mousemove(mouse, lineData.tooltip);
         })
-        .on("mouseout", function() {
+        .on('mouseout', function() {
             mouseout(lineData.tooltip);
         });
 
-    happiness.selectAll("circle")
+    happiness.selectAll('circle')
         .data(dataset)
         .enter()
-        .append("circle")
-        .style("visibility", "hidden")
+        .append('circle')
+        .style('visibility', 'hidden')
         .transition()
         .delay(500)
-        .attr("class", "dot")
-        .attr("r", 4)
-        .attr("cx", function(d) { return x(d.date); })
-        .attr("cy", function(d) { return y1(d.happiness); })
-        .style("visibility", "initial");
+        .attr('class', 'dot')
+        .attr('r', 4)
+        .attr('cx', function(d) { return x(d.date); })
+        .attr('cy', function(d) { return y1(d.happiness); })
+        .style('visibility', function(d) { return d.happiness !== null ? 'initial' : 'hidden'; })
 
+    // show tooltips when mouseover
     happiness.selectAll('circle')
         .on('mouseover', function(d) {
 
             mouseover(lineData.tooltip);
-
-            lineData.tooltip.html('<b> Year: </b>' + parseTime(d.date) + '<br>' + '<b>Happiness: </b>' + parseRate(d.happiness));
+            lineData.tooltip.html('<b> Year: </b>' + parseTime(d.date) + '<br>' +
+                '<b>Happiness: </b>' + parseRate(d.happiness));
         })
         .on('mousemove', function() {
             var mouse = d3.mouse(this);
             mousemove(mouse, lineData.tooltip);
         })
-        .on("mouseout", function() {
+        .on('mouseout', function() {
             mouseout(lineData.tooltip);
         });
 
-    // call legend
+    // call axistitles
     linechart.select('.line-legend')
         .call(d3.legend);
 }
 
-function lineLegend() {
-
-
-}
-
-function updateLineLegend() {
-
-}
-
-function checkData(data) {
-    // check of entire gdp of happiness data is unkown
-    var gdpExists = false;
-    var happinessExists = false;
-    data.forEach(function(d) {
-        if (d.gdp != null) {
-            gdpExists = true;
-        }
-        if (d.happiness != null) {
-            happinessExists = true;
-        }
-    })
-
-    return [gdpExists, happinessExists];
-
-}
 
 /*
 This function converts the data into a specific form in a list that is

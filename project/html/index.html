@@ -14,108 +14,129 @@ elements to structure the overall outly of the html page.
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset='utf-8'>
         <title>Do we follow the money or happiness?</title>
         <!-- CSS style files -->
-        <link rel="stylesheet" href="../style/bootstrap.min.css"/>
-        <link rel="stylesheet" href="../style/worldmap.css"/>
-        <link rel="stylesheet" href="../style/linechart.css"/>
-        <link rel="stylesheet" href="../style/piecharts.css"/>
-        <link rel="stylesheet" href="../style/index.css"/>
+        <link rel='stylesheet' href='../style/bootstrap.min.css'/>
+        <link rel='stylesheet' href='../style/worldmap.css'/>
+        <link rel='stylesheet' href='../style/linechart.css'/>
+        <link rel='stylesheet' href='../style/piecharts.css'/>
+        <link rel='stylesheet' href='../style/index.css'/>
         <!-- favicon -->
-        <link rel="icon" href="../../doc/favicon.png" type="image/gif">
+        <link rel='icon' href='../../doc/favicon.png' type='image/gif'>
         <!-- D3 -->
-        <script type="text/javascript" src="../javascript/libraries/d3.min.js"></script>
+        <script type='text/javascript' src='../javascript/libraries/d3.min.js'></script>
         <!-- D3 queue -->
-        <script type="text/javascript" src="../javascript/libraries/d3-queue.v3.min.js"></script>
+        <script type='text/javascript' src='../javascript/libraries/d3-queue.v3.min.js'></script>
         <!-- Topojason javascript -->
-        <script type="text/javascript" src="../javascript/libraries/topojson.min.js"></script>
+        <script type='text/javascript' src='../javascript/libraries/topojson.min.js'></script>
         <!-- Datamaps javascript -->
-        <script type="text/javascript" src="../javascript/libraries/datamaps.world.min.js"></script>
+        <script type='text/javascript' src='../javascript/libraries/datamaps.world.min.js'></script>
         <!-- jQuery -->
-        <script type="text/javascript" src="../javascript/libraries/jquery-3.2.1.min.js"></script>
+        <script type='text/javascript' src='../javascript/libraries/jquery-3.2.1.min.js'></script>
         <!-- Bootstrap javascript -->
-        <script type="text/javascript" src="../javascript/libraries/bootstrap.min.js"></script>
+        <script type='text/javascript' src='../javascript/libraries/bootstrap.min.js'></script>
         <!-- d3 Legend -->
-        <script type="text/javascript" src="../javascript/libraries/d3.legend.js"></script>
+        <script type='text/javascript' src='../javascript/libraries/d3.legend.js'></script>
         <!-- Country codes -->
-        <script type="text/javascript" src="../../scripts/country_codes.js"></script>
+        <script type='text/javascript' src='../../scripts/country_codes.js'></script>
         <!-- Javascript files project -->
-        <script type="text/javascript" src="../javascript/helpers.js"></script>
-        <script type="text/javascript" src="../javascript/piecharts.js"></script>
-        <script type="text/javascript" src="../javascript/linechart.js"></script>
-        <script type="text/javascript" src="../javascript/worldmap.js"></script>
-        <script type="text/javascript" src="../javascript/index.js"></script>
+        <script type='text/javascript' src='../javascript/helpers.js'></script>
+        <script type='text/javascript' src='../javascript/piecharts.js'></script>
+        <script type='text/javascript' src='../javascript/linechart.js'></script>
+        <script type='text/javascript' src='../javascript/worldmap.js'></script>
+        <script type='text/javascript' src='../javascript/index.js'></script>
     </head>
 
     <body>
 
         <!-- Headers -->
-        <div class="row">
-            <div class="jumbotron">
-                <div class="container text-center">
+        <div class='row'>
+            <div class='jumbotron'>
+                <div class='container text-center'>
                     <h1>Do we follow the money or happiness?</h1>
-                    <p>adsf</p>
+                    <p>Since the ages of the hunting and gathering, people are constantly
+                        moving their living places all over the world. In the modern
+                        world, most people's intention is not looking for new food
+                        or wildlife: people migrate because of their work, they
+                        flee from war, social captivity, or other reasons. Two
+                        variables that may summarize these reasons, are Gross Domestic
+                        Product (GDP) and happiness. This web-application
+                        shows the average GDP per capita and happiness rates of
+                        countries in the world. Select a country and see what the
+                        the origins of immigrants and destinations of emigrants
+                        are. Did those migrants seek for money or happiness?</p>
                 </div>
             </div>
         </div>
 
         <!-- Container containing all visualisations -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-7'>
 
-                    <div class="btn-group">
-                        <button type="button" value="0" class="btn btn-default map start" id='map0'>GDP</button>
-                        <button type="button" value="1" class="btn btn-default map" id='map1'>Happiness</button>
+                    <!-- Buttons to select gdp or happiness -->
+                    <div class='btn-group'>
+                        <button type='button' value='0' class='btn btn-default map start' id='map0'>GDP</button>
+                        <button type='button' value='1' class='btn btn-default map' id='map1'>Happiness</button>
                     </div>
 
                     <!-- Worldmap -->
-                    <div id="container1">
+                    <div id='container1'>
 
-                        <div class="slidecontainer">
-                            <input type="range" name="sliderMap" min="2008" max="2016" value="2008" class="slider" id="slider-years">
-                            <output for="sliderMap"></output>
-                            </div>
+                        <!-- Slider -->
+                        <div class='slidecontainer'>
+                            <input type='range' name='sliderMap' min='2008' max='2016' value='2008' class='slider' id='slider-years'>
+                            <output for='sliderMap'></output>
+                        </div>
 
                     </div>
                 </div>
 
                 <!-- Linecharts -->
-                <div class="col-md-5">
-                    <div id="container2"></div>
+                <div class='col-md-5'>
+                    <div id='container2'></div>
                 </div>
 
             </div>
 
 
-            <div class="row">
+            <div class='row'>
 
                 <!-- Immigration piechart -->
-                <div class="col-md-5">
-                    <div id="container3"></div>
+                <div class='col-md-5'>
+                    <div id='container3'></div>
                 </div>
 
-                <div class="col-md-2">
-                    <div class="btn-group">
-                        <button type="button" value="0" class="btn btn-default pie" id='pie0'>2010</button>
-                        <button type="button" value="1" class="btn btn-default pie start" id='pie1'>2015</button>
+                <!-- Buttons piechart (2010 and 2015) -->
+                <div class='col-md-2'>
+                    <div class='btn-group'>
+                        <button type='button' value='0' class='btn btn-default pie' id='pie0'>2010</button>
+                        <button type='button' value='1' class='btn btn-default pie start' id='pie1'>2015</button>
                     </div>
                 </div>
 
                 <!-- Emigration piechart -->
-                <div class="col-md-5">
-                    <div id="container4"></div>
+                <div class='col-md-5'>
+                    <div id='container4'></div>
                 </div>
             </div>
 
         </div>
 
         <!-- Footer -->
-        <div class="row">
-            <div class="col-md-12">
-                <footer class="container-fluid text-center">
-                    <p>Made by Christoffel Doorman, 10654976</p>
+        <div class='row'>
+            <div class='col-md-12'>
+                <footer class='container-fluid text-center'>
+                    <p>Author: Christoffel Doorman<br>
+                        GDP data-source:
+                        <a href='http://wid.world/data/'>World Wealth & Income Database</a><br>
+                        Happiness data-souce:
+                        <a href='https://ourworldindata.org/happiness-and-life-satisfaction'>Happiness and Life Satisfaction</a><br>
+                        Happiness data-souce:
+                        <a href='http://www.un.org/en/development/desa/population/migration/data/estimates2/estimates17.shtml'>United Nations Population Division</a>
+                    </p>
+
                 </footer>
             </div>
         </div>

@@ -50,6 +50,7 @@ This file contains all style attributes for the visualisation of the worldmap.
 
 .slidecontainer {
 	position: absolute;
+	height: 30px;
 	bottom: 20px;
 	left: 20%;
 	right: 20%;
@@ -80,8 +81,8 @@ output {
     border-radius: 2px;
     display: inline-block;
     font: 15px Sans-serif;
-    bottom: 40px;
-    left: 50px;
+    bottom: 50px;
+    right: 50px;
     margin-left: 50px;
 }
 

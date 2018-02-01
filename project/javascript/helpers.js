@@ -11,34 +11,34 @@ File contains all functions used in one or multiple javascript files.
 
 /*
 This function converts a number into an international valuta format.
-value: number
+- value: number
 */
 function parseMoney(value) {
-    return d3.format(",.0f")(value) + ' Intl$';
+    return d3.format(',.0f')(value) + ' Intl$';
 }
 
 
 /*
 This function converts a date-time into a year.
-value: date-time
+- value: date-time
 */
 function parseTime(value) {
-    return d3.time.format("%Y")(value);
+    return d3.time.format('%Y')(value);
 }
 
 
 /*
 This function converts a year into a date-time format.
-value: year
+- value: year
 */
 function parseDate(value) {
-    return d3.time.format("%Y").parse(value);
+    return d3.time.format('%Y').parse(value);
 }
 
 
 /*
 This function rounds a number to one decimal.
-value: number
+- value: number
 */
 function parseRate(value) {
     return d3.format('.1f')(value);
@@ -47,7 +47,7 @@ function parseRate(value) {
 
 /*
 This function places a comma for every thousant
-value: number
+- value: number
 */
 function parseNumber(value) {
     return d3.format(',')(value);
@@ -56,7 +56,7 @@ function parseNumber(value) {
 
 /*
 This function returns the full name of a country codes
-country: three-letter country code
+- country: three-letter country code
 */
 function findCountryName(country) {
     for (i = 0; i < countryCodes.length; i++) {
@@ -70,15 +70,15 @@ function findCountryName(country) {
 
 /*
 This function adds a tooltip to the geograph
-container: #container as string
-type: map, pie or line
+- container: #container as string
+- type: map, pie or line
 */
 function addTooltip(container, type) {
 
     var tooltip = d3.select(container).append('div')
         .attr('class', 'tooltip')
         .attr('id', 'tooltip-' + type)
-        .style("display", "none");
+        .style('display', 'none');
 
     return tooltip;
 
@@ -86,38 +86,38 @@ function addTooltip(container, type) {
 
 /*
 This function displays the tooltip when mouseover
-tooltip: the hidden tooltip
+- tooltip: the hidden tooltip
 */
 function mouseover(tooltip) {
     tooltip.transition()
         .duration(200)
-        .style("display", "inline");
+        .style('display', 'inline');
 }
 
 /*
 This function lets tooltip follow the mouse when mouseover
-mouse: mouse location ([x, y])
-tooltip: the added tooltip
+- mouse: mouse location ([x, y])
+- tooltip: the added tooltip
 */
 function mousemove(mouse, tooltip) {
-    tooltip.style("left", (mouse[0]) + "px")
-        .style("top", (mouse[1]) + "px");
+    tooltip.style('left', (mouse[0]) + 'px')
+        .style('top', (mouse[1]) + 'px');
 
 }
 
 /*
 This function hides the tooltip when mouseout
-tooltip: the added tooltip
+- tooltip: the added tooltip
 */
 function mouseout(tooltip) {
     tooltip.transition()
         .duration(100)
-        .style("display", "none");
+        .style('display', 'none');
 }
 
 /*
 This function colors the buttons whether it is selected or not
-element: this
+- element: this
 */
 function buttonColor(element) {
 
@@ -129,6 +129,7 @@ function buttonColor(element) {
     // do nothing if already selected button in pressed
     if (( currValue != prevValue || currClass.split(' ')[2] != prevClass )
           && currColor != 'rgb(189, 189, 189)' ) {
+
         // switch colors of buttons
         if ((currValue == 0) && (d3.select(element).style('background-color') == 'rgb(240, 240, 240)')) {
             d3.select(currID + '0').style('background-color', 'rgb(189, 189, 189)');
@@ -145,19 +146,38 @@ function buttonColor(element) {
 }
 
 /*
+This function checks if entire dataset happens to be unknown.
+- data: dataset visible in map and linecharts
+*/
+function checkData(data) {
+    var gdpExists = false;
+    var happinessExists = false;
+    data.forEach(function(d) {
+        if (d.gdp != null) {
+            gdpExists = true;
+        }
+        if (d.happiness != null) {
+            happinessExists = true;
+        }
+    })
+
+    return [gdpExists, happinessExists];
+}
+
+/*
 This function displays info of no data when data is unkown
-tooltip: the selected container
+- container: the selected container
 */
 function displayNoData(container) {
-    d3.select('#' + container)
+    d3.select(container)
         .append('svg')
         .attr('class', 'no-data')
         .attr('width', '100%')
         .attr('height', '100%')
-        .append("text")
+        .append('text')
         .attr('id', 'no-data')
-        .attr("dx", (width / 2))
-        .attr("dy", 0 - (height / 2))
-        .attr("text-anchor", "middle")
-        .text("Sorry, no data")
+        .attr('dx', (width / 2))
+        .attr('dy', (height / 2))
+        .attr('text-anchor', 'middle')
+        .text('Sorry, no data')
 }

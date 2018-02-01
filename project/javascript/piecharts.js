@@ -9,8 +9,7 @@ Student number: 10580557
 File contains functions to draw and update the piechart visualisations.
 */
 
-// var width = 960;
-// var height = 400;
+// global object to store variables used in piecharts.js only
 var pieData = {}
 
 /*
@@ -92,56 +91,60 @@ function drawPiechart(data, year, country, migrationType) {
 
     // enter data and show tooltip when mouseover
     var g = piechart.selectAll(".fan")
-			.data(pie(data))
-			.enter()
-			.append("g")
-			.attr("class", "fan")
-            .on('mouseover', function(d) {
+        .data(pie(data))
+        .enter()
+        .append("g")
+        .attr("class", "fan")
+        .on('mouseover', function(d) {
 
-                // show tooltip when mouseover
-                if (migrationType == 'immigration') {
+            // show tooltip when mouseover
+            if (migrationType == 'immigration') {
 
-                    mouseover(pieData.tooltipImm);
-                    pieData.tooltipImm.html(function() {
+                mouseover(pieData.tooltipImm);
+                pieData.tooltipImm.html(function() {
 
-                        if (d.data.country == 'Others') {
-                            return ('<b>Others (' + parseNumber(d.value) + '): <b>' + othersLabel);
-                        } else {
-                            return '<b>Country:</b> ' + d.data.name + '<br>' + '<b>Immigrants: </b>' + parseNumber(d.value);
-                        }
-                    })
+                    if (d.data.country == 'Others') {
+                        return ('<b>Others (' + parseNumber(d.value) +
+                            '): <b>' + othersLabel);
+                    } else {
+                        return '<b>Country:</b> ' + d.data.name + '<br>' +
+                            '<b>Immigrants: </b>' + parseNumber(d.value);
+                    }
+                })
 
-                } else if (migrationType == 'emigration') {
+            } else if (migrationType == 'emigration') {
 
-                    mouseover(pieData.tooltipEmi);
-                    pieData.tooltipEmi.html(function() {
+                mouseover(pieData.tooltipEmi);
+                pieData.tooltipEmi.html(function() {
 
-                        if (d.data.country == 'Others') {
-                            return '<b>Others (' + parseNumber(d.value) + '): </b>' + othersLabel;
-                        } else {
-                            return '<b>Country: </b>' + d.data.name + '<br>' + '<b>Emigrants: </b>' + parseNumber(d.value);
-                        }
-                    })
-                }
-            })
-            // let tooltip chase mouse
-            .on('mousemove', function() {
-                var mouse = d3.mouse(this);
-                mouse[0] += 230;
-                mouse[1] += 150;
-                mousemove(mouse, pieData.tooltipImm);
-                mouse[0] += 120;
-                mousemove(mouse, pieData.tooltipEmi);
-            })
-            // hide tooltip when mouseout
-            .on('mouseout', function() {
-                mouseout(pieData.tooltipImm);
-                mouseout(pieData.tooltipEmi);
-            });
+                    if (d.data.country == 'Others') {
+                        return '<b>Others (' + parseNumber(d.value) +
+                            '): </b>' + othersLabel;
+                    } else {
+                        return '<b>Country: </b>' + d.data.name + '<br>' +
+                            '<b>Emigrants: </b>' + parseNumber(d.value);
+                    }
+                })
+            }
+        })
+        // let tooltip chase mouse
+        .on('mousemove', function() {
+            var mouse = d3.mouse(this);
+            mouse[0] += 230;
+            mouse[1] += 150;
+            mousemove(mouse, pieData.tooltipImm);
+            mouse[0] += 120;
+            mousemove(mouse, pieData.tooltipEmi);
+        })
+        // hide tooltip when mouseout
+        .on('mouseout', function() {
+            mouseout(pieData.tooltipImm);
+            mouseout(pieData.tooltipEmi);
+        });
 
     // set color range
     var color = d3.scale.ordinal()
-                .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#346084"]);
 
     g.append("path")
     	.attr("d", arc)
@@ -151,10 +154,6 @@ function drawPiechart(data, year, country, migrationType) {
         .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
         .style("text-anchor", "middle")
         .text(function(d) { return d.data.country; });
-}
-
-function updatePiechart() {
-
 }
 
 /*
@@ -204,7 +203,6 @@ function makeOthersLabel(data) {
 
             // append new country to list
             otherMost.push(info[i]);
-            // console.log(info[i])
 
             // search new lowest country in list
             lowestCountry = otherMost[0].name;
@@ -229,7 +227,8 @@ function makeOthersLabel(data) {
     // make string of country names and values
     var totalLabel = '';
     for (i = 0; i < otherMost.length; i++) {
-        totalLabel += '<br>- ' + otherMost[i].name + ' (' + parseNumber(otherMost[i].value) + ')';
+        totalLabel += '<br>- ' + otherMost[i].name + ' (' +
+            parseNumber(otherMost[i].value) + ')';
     }
 
     totalLabel += '<br>...'

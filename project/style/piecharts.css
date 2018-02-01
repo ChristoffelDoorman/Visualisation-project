@@ -17,6 +17,7 @@ This file contains all style attributes for the piecharts visualisations.
 }
 
 #container4 {
+	height: 500px;
 	width:100%;
 }
 

@@ -46,36 +46,36 @@ function drawWorldmap(mapData, migrationData, year, category){
             d3.selectAll('.datamaps-subunit')
                 .on('click', function(geography) {
 
+                    d3.selectAll('.no-data').remove();
+
                     // get country code of clicked country
                     currCountry = geography.id;
 
                     // if no data, alert user and draw previous piechart
                     if (migrationData[pieYear][currCountry] == undefined) {
                         d3.selectAll('.piechart').remove();
-                        displayNoData('container3');
-                        displayNoData('container4');
-                        updateLinechart(mapData, currCountry);
-
+                        displayNoData('#container3');
+                        displayNoData('#container4');
 
                     } else if (migrationData[pieYear][currCountry]['emigration'] == undefined) {
-                        alert("There is no emigration data about this country.")
                         d3.selectAll('.piechart').remove();
+                        displayNoData('#container4');
                         drawPiechart(migrationData, pieYear, currCountry, 'immigration');
-
+                        updateLinechart(mapData, currCountry);
 
                     } else if (migrationData[pieYear][currCountry]['immigration'] == undefined) {
-                        alert("There is no immigration data about this country.")
                         d3.selectAll('.piechart').remove();
+                        displayNoData('#container3');
                         drawPiechart(migrationData, pieYear, currCountry, 'emigration');
+                        updateLinechart(mapData, pieYear, currCountry);
+
                     } else {
-
                         d3.selectAll('.piechart').remove();
-
-                        // drawLinechart(mapData, currCountry);
-                        updateLinechart(mapData, currCountry)
                         drawPiechart(migrationData, pieYear, currCountry, 'emigration');
                         drawPiechart(migrationData, pieYear, currCountry, 'immigration');
                     }
+
+                    updateLinechart(mapData, currCountry);
 
                 })
         },
@@ -88,14 +88,19 @@ function drawWorldmap(mapData, migrationData, year, category){
             popupTemplate: function(geography, data) {
 
                 // show tooltip with country and gdp or happiness data
-                if (data['category'] == "unknown") {
-                    return '<div class="hoverinfo"><strong>' + geography.properties.name + ': unknown</strong></div>';
+                if (data['category'] == 'unknown') {
+                    return '<div class="hoverinfo"><strong>' +
+                        geography.properties.name + ': unknown</strong></div>';
                 }
                 if (category == 'gdp') {
-                    return '<div class="hoverinfo"><strong>' + geography.properties.name + ': ' + parseMoney(data['category']) + '</strong></div>';
+                    return '<div class="hoverinfo"><strong>' +
+                        geography.properties.name + ': ' +
+                        parseMoney(data['category']) + '</strong></div>';
                 }
                 if (category == 'happiness') {
-                    return '<div class="hoverinfo"><strong>' + geography.properties.name + ': ' + parseFloat(data['category']).toFixed(1) + '</strong></div>';
+                    return '<div class="hoverinfo"><strong>' +
+                        geography.properties.name + ': ' +
+                        parseFloat(data['category']).toFixed(1) + '</strong></div>';
                 }
             },
             highlightFillColor: '#FC8D59',
@@ -166,39 +171,39 @@ function prepareMapData(data, category) {
 
         if (category == 'gdp') {
 
-            if (value == "unknown") {
-                fillColor = "default-fill";
+            if (value == 'unknown') {
+                fillColor = 'default-fill';
             } else if (value < 5000) {
-                fillColor = "A";
+                fillColor = 'A';
             } else if (value < 10000) {
-                fillColor = "B";
+                fillColor = 'B';
             } else if (value < 15000) {
-                fillColor = "C";
+                fillColor = 'C';
             } else if (value < 30000) {
-                fillColor = "D";
+                fillColor = 'D';
             } else if (value < 50000) {
-                fillColor = "E";
+                fillColor = 'E';
             } else if (value >= 50000) {
-                fillColor = "F";
+                fillColor = 'F';
             }
         }
 
         if (category == 'happiness') {
 
-            if (value == "unknown") {
-                fillColor = "default-fill";
+            if (value == 'unknown') {
+                fillColor = 'default-fill';
             } else if (value < 4) {
-                fillColor = "A";
+                fillColor = 'A';
             } else if (value < 5) {
-                fillColor = "B";
+                fillColor = 'B';
             } else if (value < 6) {
-                fillColor = "C";
+                fillColor = 'C';
             } else if (value < 7) {
-                fillColor = "D";
+                fillColor = 'D';
             } else if (value < 8) {
-                fillColor = "E";
+                fillColor = 'E';
             } else if (value >= 8) {
-                fillColor = "F";
+                fillColor = 'F';
             }
         }
 
@@ -214,37 +219,36 @@ This jQuery function shifts the tooltip of the slider towards the selector
 Source: https://css-tricks.com/value-bubbles-for-range-inputs/
 */
 $(function() {
- var el, newPoint, newPlace, offset;
+    var el, newPoint, newPlace, offset;
 
- // Select all range inputs, watch for change
- $("input[type='range']").change(function() {
+    // Select all range inputs, watch for change
+    $('input[type="range"]').change(function() {
 
-   // Cache this for efficiency
-   el = $(this);
+        // Cache this for efficiency
+        var el = $(this);
 
-   // Measure width of range input
-   width = el.width();
+        // Measure width of range input
+        var width = el.width();
 
-   // Figure out placement percentage between left and right of input
-   newPoint = (el.val() - el.attr("min")) / (el.attr("max") - el.attr("min"));
+        // Figure out placement percentage between left and right of input
+        var newPoint = (el.val() - el.attr('min')) / (el.attr('max') - el.attr('min'));
 
-   // Janky value to get pointer to line up better
-   offset = -1.3;
+        // Janky value to get pointer to line up better
+        var offset = 11;
 
-   // Prevent bubble from going beyond left or right (unsupported browsers)
-   if (newPoint < 0) { newPlace = 0; }
-   else if (newPoint > 1) { newPlace = width; }
-   else { newPlace = width * newPoint + offset; offset -= newPoint; }
+        // Prevent bubble from going beyond left or right (unsupported browsers)
+        if (newPoint < 0) { newPlace = 0; }
+        else if (newPoint > 1) { newPlace = width; }
+        else { newPlace = width * newPoint + offset; offset -= newPoint; }
 
-   // Move bubble
-   el
-     .next("output")
-     .css({
-       left: newPlace,
-       marginLeft: offset + "%"
-     })
-     .text(el.val());
- })
- // Fake a change to position bubble at page load
- .trigger('change');
+        // Move bubble
+        el.next('output')
+            .css({
+                left: newPlace,
+                marginLeft: offset + '%'
+            })
+            .text(el.val());
+    })
+    // Fake a change to position bubble at page load
+    .trigger('change');
 });
