@@ -11,27 +11,48 @@ File contains all function used in one or multiple javascript files.
 
 /*
 This function converts a number into an international valuta format.
-value: number to be converted
+value: number
 */
 function parseMoney(value) {
     return d3.format(",.0f")(value) + ' Intl$';
 }
 
+
+/*
+This function converts a date-time into a year.
+value: date-time
+*/
+function parseTime(value) {
+    return d3.time.format("%Y")(value);
+}
+
+
+/*
+This function converts a year into a date-time format.
+value: year
+*/
+function parseDate(value) {
+    return d3.time.format("%Y").parse(value);
+}
+
+
 /*
 This function rounds a number to one decimal.
-value: number to be rounded
+value: number
 */
 function parseRate(value) {
     return d3.format('.1f')(value);
 }
 
+
 /*
 This function places a comma for every thousant
-value: number to be converted
+value: number
 */
 function parseNumber(value) {
     return d3.format(',')(value);
 }
+
 
 /*
 This function returns the full name of a country codes
@@ -49,7 +70,7 @@ function findCountryName(country) {
 
 /*
 This function adds a tooltip to the geograph
-container: the selected container
+container: #container as string
 type: map, pie or line
 */
 function addTooltip(container, type) {

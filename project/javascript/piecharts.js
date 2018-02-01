@@ -11,15 +11,14 @@ File contains functions to draw and update the piechart visualisations.
 
 // var width = 960;
 // var height = 400;
-var radius = 200;
 var pieData = {}
 
 /*
 This function draws a piechart.
-data: the data from migrationData.json
-year: the selected year (2010 or 2015)
-country: the selected country in the worldmap
-migrationType: emigration or immigration
+- data: the data from migrationData.json
+- year: the selected year (2010 or 2015)
+- country: the selected country in the worldmap
+- migrationType: emigration or immigration
 */
 function drawPiechart(data, year, country, migrationType) {
 
@@ -29,12 +28,11 @@ function drawPiechart(data, year, country, migrationType) {
         d.value = +d.value;
     })
 
+    // make string of other countries and calculate total migration for labeling
     var othersLabel = makeOthersLabel(data);
-
-
     var totalMigration = countMigration(data);
 
-    // append svg
+    // append svg, tooltip and title
     if (migrationType == 'immigration') {
 
         pieData['tooltipImm'] = addTooltip('#container3', 'pie');
@@ -77,19 +75,22 @@ function drawPiechart(data, year, country, migrationType) {
             .text("Countries of destination")
     }
 
-    // display total emigration or emigration inside piechart
+    // display total immigration or emigration inside piechart
     piechart.append('text')
         .attr("text-anchor", "middle")
         .text("Total: " + parseNumber(totalMigration));
 
+    // add the arcs of the pie
     var arc = d3.svg.arc()
-			.outerRadius(radius)
+			.outerRadius(200)
 			.innerRadius(80);
 
+    // sort and add the pie-pieces
     var pie = d3.layout.pie()
 			.sort(null)
 			.value(function(d){ return d.value; });
 
+    // enter data and show tooltip when mouseover
     var g = piechart.selectAll(".fan")
 			.data(pie(data))
 			.enter()
@@ -97,12 +98,10 @@ function drawPiechart(data, year, country, migrationType) {
 			.attr("class", "fan")
             .on('mouseover', function(d) {
 
-
-
-                   //
+                // show tooltip when mouseover
                 if (migrationType == 'immigration') {
-                    mouseover(pieData.tooltipImm);
 
+                    mouseover(pieData.tooltipImm);
                     pieData.tooltipImm.html(function() {
 
                         if (d.data.country == 'Others') {
@@ -113,8 +112,8 @@ function drawPiechart(data, year, country, migrationType) {
                     })
 
                 } else if (migrationType == 'emigration') {
-                    mouseover(pieData.tooltipEmi);
 
+                    mouseover(pieData.tooltipEmi);
                     pieData.tooltipEmi.html(function() {
 
                         if (d.data.country == 'Others') {
@@ -125,6 +124,7 @@ function drawPiechart(data, year, country, migrationType) {
                     })
                 }
             })
+            // let tooltip chase mouse
             .on('mousemove', function() {
                 var mouse = d3.mouse(this);
                 mouse[0] += 230;
@@ -133,12 +133,13 @@ function drawPiechart(data, year, country, migrationType) {
                 mouse[0] += 120;
                 mousemove(mouse, pieData.tooltipEmi);
             })
+            // hide tooltip when mouseout
             .on('mouseout', function() {
                 mouseout(pieData.tooltipImm);
                 mouseout(pieData.tooltipEmi);
-            })
+            });
 
-
+    // set color range
     var color = d3.scale.ordinal()
                 .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
@@ -156,11 +157,17 @@ function updatePiechart() {
 
 }
 
+/*
+This function creates a string containing top 6 countries and their values of
+the countries in 'Others' of immigration and emigration piecharts.
+- data: immigration or emigration data
+*/
 function makeOthersLabel(data) {
 
     // list with dictionaries of 'other countries'
     var info = data[data.length-1].info;
 
+    // convert values to numbers
     info.forEach(function(d) {
         d.value = +d.value;
     })
@@ -171,7 +178,6 @@ function makeOthersLabel(data) {
     // set first country as lowest value
     var lowestCountry = info[0].name;
     var lowestValue = info[0].value;
-
 
     // iterate over all other countries in category 'info'
     for (i = 1; i < info.length; i++) {
@@ -226,10 +232,15 @@ function makeOthersLabel(data) {
         totalLabel += '<br>- ' + otherMost[i].name + ' (' + parseNumber(otherMost[i].value) + ')';
     }
 
+    totalLabel += '<br>...'
+
     return totalLabel;
 }
 
-
+/*
+This function counts the total immigrants or emigrants.
+- data: immigration or emigration data
+*/
 function countMigration(data) {
     var totalMigration = 0;
     for (var i = 0; i < data.length; i++) {

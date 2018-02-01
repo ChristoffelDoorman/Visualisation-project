@@ -16,18 +16,18 @@ elements to structure the overall outly of the html page.
     <head>
         <meta charset="utf-8">
         <title>Do we follow the money or happiness?</title>
-        <!-- CSS files -->
-        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="../css/worldmap.css"/>
-        <link rel="stylesheet" href="../css/linechart.css"/>
-        <link rel="stylesheet" href="../css/piecharts.css"/>
-        <link rel="stylesheet" href="../css/index.css"/>
+        <!-- CSS style files -->
+        <link rel="stylesheet" href="../style/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../style/worldmap.css"/>
+        <link rel="stylesheet" href="../style/linechart.css"/>
+        <link rel="stylesheet" href="../style/piecharts.css"/>
+        <link rel="stylesheet" href="../style/index.css"/>
         <!-- favicon -->
         <link rel="icon" href="../../doc/favicon.png" type="image/gif">
         <!-- D3 -->
         <script type="text/javascript" src="../javascript/libraries/d3.min.js"></script>
         <!-- D3 queue -->
-        <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+        <script type="text/javascript" src="../javascript/libraries/d3-queue.v3.min.js"></script>
         <!-- Topojason javascript -->
         <script type="text/javascript" src="../javascript/libraries/topojson.min.js"></script>
         <!-- Datamaps javascript -->
@@ -46,7 +46,6 @@ elements to structure the overall outly of the html page.
         <script type="text/javascript" src="../javascript/linechart.js"></script>
         <script type="text/javascript" src="../javascript/worldmap.js"></script>
         <script type="text/javascript" src="../javascript/index.js"></script>
-
     </head>
 
     <body>
@@ -61,7 +60,7 @@ elements to structure the overall outly of the html page.
             </div>
         </div>
 
-
+        <!-- Container containing all visualisations -->
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
@@ -71,6 +70,7 @@ elements to structure the overall outly of the html page.
                         <button type="button" value="1" class="btn btn-default map" id='map1'>Happiness</button>
                     </div>
 
+                    <!-- Worldmap -->
                     <div id="container1">
 
                         <div class="slidecontainer">
@@ -81,6 +81,7 @@ elements to structure the overall outly of the html page.
                     </div>
                 </div>
 
+                <!-- Linecharts -->
                 <div class="col-md-5">
                     <div id="container2"></div>
                 </div>
@@ -90,6 +91,7 @@ elements to structure the overall outly of the html page.
 
             <div class="row">
 
+                <!-- Immigration piechart -->
                 <div class="col-md-5">
                     <div id="container3"></div>
                 </div>
@@ -101,7 +103,7 @@ elements to structure the overall outly of the html page.
                     </div>
                 </div>
 
-
+                <!-- Emigration piechart -->
                 <div class="col-md-5">
                     <div id="container4"></div>
                 </div>
@@ -109,6 +111,7 @@ elements to structure the overall outly of the html page.
 
         </div>
 
+        <!-- Footer -->
         <div class="row">
             <div class="col-md-12">
                 <footer class="container-fluid text-center">

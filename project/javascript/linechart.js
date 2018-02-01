@@ -14,10 +14,12 @@ var lineData = {};
 var linechart;
 
 /*
-This function adds all elements to draw the line chart
+This function adds all elements to draw the line chart svg, axis, add scales,
+initiates paths, title and the legend.
 */
 function drawLinechart() {
 
+    // set height and width
     lineData['width'] = width = 460;
     lineData['height'] = height = 400;
 
@@ -26,7 +28,7 @@ function drawLinechart() {
     lineData["y0"] = y0 = d3.scale.linear().range([height / 1.3, 70]);
     lineData["y1"] = y1 = d3.scale.linear().range([height / 1.3, 70]);
 
-    // add axis
+    // scale all axis
     lineData["xAxis"] = d3.svg.axis().scale(x)
         .orient("bottom").ticks(d3.timeYear);
 
@@ -95,7 +97,7 @@ function drawLinechart() {
         .attr('id', 'y1axis')
         .attr("transform", "translate(" + width / 1.15 + " ,0)");
 
-    // append legend
+    // add legend
     linechart.append("g")
         .attr("class", "line-legend")
         .attr("transform", "translate(-10, 50)");
@@ -107,8 +109,6 @@ data: the data dispayed in the linecharts
 country: the selected country
 */
 function updateLinechart(data, country) {
-
-    var formatTime = d3.time.format("%Y");
 
     var countryName = findCountryName(country);
 
@@ -176,7 +176,7 @@ function updateLinechart(data, country) {
 
             mouseover(lineData.tooltip);
 
-            lineData.tooltip.html('<b>Year: </b>' + formatTime(d.date) + '<br>' +
+            lineData.tooltip.html('<b>Year: </b>' + parseTime(d.date) + '<br>' +
                     '<b>GDP: </b>' + parseMoney(d.gdp))
         })
         .on('mousemove', function() {
@@ -205,7 +205,7 @@ function updateLinechart(data, country) {
 
             mouseover(lineData.tooltip);
 
-            lineData.tooltip.html('<b> Year: </b>' + formatTime(d.date) + '<br>' + '<b>Happiness: </b>' + parseRate(d.happiness));
+            lineData.tooltip.html('<b> Year: </b>' + parseTime(d.date) + '<br>' + '<b>Happiness: </b>' + parseRate(d.happiness));
         })
         .on('mousemove', function() {
             var mouse = d3.mouse(this);
@@ -253,9 +253,6 @@ data: data that has to be converted
 country: selected country
 */
 function prepareLineData(data, country) {
-
-    // parse year to date format
-    var parseDate = d3.time.format("%Y").parse;
 
     // create list to store datapoints
     var dataset = []

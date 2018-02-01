@@ -9,13 +9,18 @@ Student number: 10580557
 This file contains the functions to draw and update the worldmap visualisations.
 */
 
-
+/*
+This function draws the worldmap and updates the linecharts and piecharts in
+the event a country is clicked.
+- mapData: data to be displayed in map and linecharts
+- migrationData: data to be displayed in piecharts
+- year: selected year (2008-2016)
+- category: gdp or happiness
+*/
 function drawWorldmap(mapData, migrationData, year, category){
 
-    // select chosen year and category
+    // select data of chosen year and category and store in usuable structure
     var data = mapData[year][category];
-
-    // convert data into usable structure
     var dataset = prepareMapData(data, category);
 
     // create datamap
@@ -37,11 +42,11 @@ function drawWorldmap(mapData, migrationData, year, category){
             defaultFill: '#bdbdbd'
         },
 
-
         done: function(geography) {
             d3.selectAll('.datamaps-subunit')
                 .on('click', function(geography) {
 
+                    // get country code of clicked country
                     currCountry = geography.id;
 
                     // if no data, alert user and draw previous piechart
@@ -81,6 +86,8 @@ function drawWorldmap(mapData, migrationData, year, category){
             borderOpacity: 1,
             borderColor: '#FDFDFD',
             popupTemplate: function(geography, data) {
+
+                // show tooltip with country and gdp or happiness data
                 if (data['category'] == "unknown") {
                     return '<div class="hoverinfo"><strong>' + geography.properties.name + ': unknown</strong></div>';
                 }
@@ -98,9 +105,7 @@ function drawWorldmap(mapData, migrationData, year, category){
 
         },
 
-        // displayed data on map
         data: dataset
-
     });
 
     // draw legend
@@ -109,7 +114,7 @@ function drawWorldmap(mapData, migrationData, year, category){
 
 /*
 This function creates the legend for the worldmap.
-category: gdp or happiness
+- category: gdp or happiness
 */
 function drawLegend(category) {
 
@@ -144,7 +149,11 @@ function drawLegend(category) {
     }
 }
 
-
+/*
+This function converts data into usuable format and assigns the fill keys
+- data: gdp or happiness data to be shown on the map
+- category: gdp or happiness
+*/
 function prepareMapData(data, category) {
 
     // create dictionary usable for datamaps
@@ -200,7 +209,10 @@ function prepareMapData(data, category) {
     return dataset;
 }
 
-// DOM Ready
+/*
+This jQuery function shifts the tooltip of the slider towards the selector
+Source: https://css-tricks.com/value-bubbles-for-range-inputs/
+*/
 $(function() {
  var el, newPoint, newPlace, offset;
 
