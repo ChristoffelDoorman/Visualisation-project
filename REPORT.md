@@ -1,6 +1,6 @@
 # Project Report
 
-## Story of visualisation
+## Story of visualization
 
 Since the ages of the hunting and gathering, people are constantly moving their living places all over the world. In the modern
 world, most people's intention is not looking for new food or wildlife: people migrate because of their work, they
@@ -76,7 +76,7 @@ I encountered multiple challenges during the process:
 
 ## Decisions
 After twe weeks, I decided to switch the locations of the visualisations. Instead of the linechart bottom-left, with the two piecharts
-right of it (see project proposalsketch beneath), I decided to place the linechart at the right-top location. I left the piecharts at the bottom. This was a bit more symmetrical and gave the visualizations some more space. For the rest, I sticked to the initial plans.
+right of it (see project-proposal sketch beneath), I decided to place the linechart at the right-top location. I left the piecharts at the bottom. This was a bit more symmetrical and gave the visualizations some more space. For the rest, I sticked to the initial plans.
 
 
 ![](/doc/project_sketch.png)
