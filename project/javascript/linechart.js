@@ -67,20 +67,18 @@ function drawLinechart() {
         .attr('x', (width / 2.3))
         .attr('y', 15)
         .attr('text-anchor', 'middle')
-        .style('font-size', '20px')
+        .style('font-size', '20px');
 
     // append line paths
     lineData['gdpline'] = linechart.append('g')
         .attr('class', 'gdp')
         .append('path')
-        .attr('class', 'line')
-        // .attr('data-legend', function(d) { return 'GDP'})
+        .attr('class', 'line');
 
     lineData['happinessline'] = linechart.append('g')
         .attr('class', 'happiness')
         .append('path')
-        .attr('class', 'line')
-        .attr('data-legend', function(d) { return 'Happiness'});
+        .attr('class', 'line');
 
     // append all axis
     linechart.append('g')
@@ -141,7 +139,7 @@ function updateLinechart(data, country) {
     } else if (!checker[0]) {
         lineData.gdpline.attr('data-legend', function(d) { return 'GDP (No data)'; })
         lineData.happinessline.attr('data-legend', function(d) { return 'Happiness'; })
-    } else if (!checker[0]) {
+    } else if (!checker[1]) {
         lineData.gdpline.attr('data-legend', function(d) { return 'GDP (Intl$)'; })
         lineData.happinessline.attr('data-legend', function(d) { return 'Happiness (No data)'; })
     } else {
